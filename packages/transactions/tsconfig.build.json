@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.build.json",
   "compilerOptions": {
     "rootDir": "./src",
-    "outDir": "../out/transactions/dist",
+    "outDir": "./dist",
   },
   "include": [
     "./src/**/*.ts"

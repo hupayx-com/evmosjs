@@ -2,7 +2,7 @@
   "extends": "../../tsconfig.build.json",
   "compilerOptions": {
     "rootDir": "./src",
-    "outDir": "../out/eip712/dist",
+    "outDir": "./dist",
   },
   "include": [
     "./src/**/*.ts"
