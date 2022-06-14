@@ -3,6 +3,19 @@ import { generatePostBodyBroadcast, generateEndpointBroadcast, TxToSend} from '@
 import {generateEndpointSimulate, generatePostBodySimulate} from '@tharsis/provider'
 import { Chain, Fee } from '@tharsis/transactions';
 const fetch = require("node-fetch");
+// import { fetch } from '@tharsis/provider'
+
+// export const EVMOS_REST = {
+//     ACCOUNT:  `/cosmos/auth/v1beta1/accounts/{}`,
+//     BALANCES: `/cosmos/bank/v1beta1/balances/{}`,
+//     PROPOSALS: `/cosmos/gov/v1beta1/proposals/`,
+//     PROPOSALTALLY: `/cosmos/gov/v1beta1/proposals/{}/tally`,
+//     REWARDS: `/cosmos/staking/v1beta1/delegations/{}/rewards`,
+//     VALIDATORS: `/cosmos/staking/v1beta1/validators?pagination.offset={}&pagination.limit={}`,
+//     DELEGATION: `/cosmos/distribution/v1beta1/delegators/{}`,
+//     UNDELEGATION: `/cosmos/staking/v1beta1/delegators/{}/unbonding_delegations`,
+//     TXS:`/cosmos/tx/v1beta1/txs/`,
+// };
 
 export interface Network {
     chainId : number;
@@ -29,6 +42,25 @@ export class EvmosNetwork implements Network, Chain {
         this.baseDnome = baseDnome;
         this.cosmosChainId = "evmos_"+this.chainId+"-"+id
     }
+
+
+    public async broadcastPostString(rawTx : string) : Promise<any> {
+        const postOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: `{"jsonrpc":"2.0","id":495531792215,"method":"broadcast_tx_sync","params":{"tx":"${rawTx}"}}`
+        };
+
+        let broadcastPost = await fetch(
+            this.rpcUrl,
+            postOptions
+        );
+
+        console.log(broadcastPost) ;
+        console.log(broadcastPost.json()) ;
+        return broadcastPost.json();
+    }
+
 
     public async broadcastPost(rawTx : TxToSend) : Promise<any> {
         const postOptions = {
@@ -61,13 +93,14 @@ export class EvmosNetwork implements Network, Chain {
     }
 
 
-    public getFee(amount : string = '400000000000000000') : Fee {
+    public getFee(amount : string = '500000000000000000') : Fee {
         return {
             amount: amount,
             denom: this.baseDnome,
             gas: '200000',
         }
     }
+
 
     public async callEvmosGet(uri : String) : Promise<any> {
 
@@ -83,5 +116,15 @@ export class EvmosNetwork implements Network, Chain {
         let addrData = await addrRawData.json();
         return addrData;
     }
+
+    // public async callEvmosGet(uri : String) : Promise<any> {
+    //     const res = await fetch(`${this.rpcUrl}${uri}`)
+    //     return JSON.parse(res)
+    // }
+
+    // public async callEvmosPageGet(uri : String, offset : number) : Promise<any> {
+    //     const res = await fetch(`${this.rpcUrl}${uri}?pagination.offset=${offset}&pagination.limit=5`)
+    //     return JSON.parse(res)
+    // }
 
 }

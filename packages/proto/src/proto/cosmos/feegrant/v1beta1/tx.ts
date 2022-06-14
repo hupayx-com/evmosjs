@@ -5,19 +5,19 @@
  * compiler version: 3.17.3
  * source: cosmos/feegrant/v1beta1/tx.proto
  * git: https://github.com/thesayyn/protoc-gen-ts */
-import * as dependency_1 from "./../../../gogoproto/gogo";
-import * as dependency_2 from "./../../../google/protobuf/any";
-import * as dependency_3 from "./../../../cosmos_proto/cosmos";
+import * as dependency_1 from "./../../../google/protobuf/any";
+import * as dependency_2 from "./../../../cosmos_proto/cosmos";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.feegrant.v1beta1 {
     export class MsgGrantAllowance extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             granter?: string;
             grantee?: string;
-            allowance?: dependency_2.google.protobuf.Any;
+            allowance?: dependency_1.google.protobuf.Any;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("granter" in data && data.granter != undefined) {
                     this.granter = data.granter;
@@ -43,15 +43,15 @@ export namespace cosmos.feegrant.v1beta1 {
             pb_1.Message.setField(this, 2, value);
         }
         get allowance() {
-            return pb_1.Message.getWrapperField(this, dependency_2.google.protobuf.Any, 3) as dependency_2.google.protobuf.Any;
+            return pb_1.Message.getWrapperField(this, dependency_1.google.protobuf.Any, 3) as dependency_1.google.protobuf.Any;
         }
-        set allowance(value: dependency_2.google.protobuf.Any) {
+        set allowance(value: dependency_1.google.protobuf.Any) {
             pb_1.Message.setWrapperField(this, 3, value);
         }
         static fromObject(data: {
             granter?: string;
             grantee?: string;
-            allowance?: ReturnType<typeof dependency_2.google.protobuf.Any.prototype.toObject>;
+            allowance?: ReturnType<typeof dependency_1.google.protobuf.Any.prototype.toObject>;
         }) {
             const message = new MsgGrantAllowance({});
             if (data.granter != null) {
@@ -61,7 +61,7 @@ export namespace cosmos.feegrant.v1beta1 {
                 message.grantee = data.grantee;
             }
             if (data.allowance != null) {
-                message.allowance = dependency_2.google.protobuf.Any.fromObject(data.allowance);
+                message.allowance = dependency_1.google.protobuf.Any.fromObject(data.allowance);
             }
             return message;
         }
@@ -69,7 +69,7 @@ export namespace cosmos.feegrant.v1beta1 {
             const data: {
                 granter?: string;
                 grantee?: string;
-                allowance?: ReturnType<typeof dependency_2.google.protobuf.Any.prototype.toObject>;
+                allowance?: ReturnType<typeof dependency_1.google.protobuf.Any.prototype.toObject>;
             } = {};
             if (this.granter != null) {
                 data.granter = this.granter;
@@ -108,7 +108,7 @@ export namespace cosmos.feegrant.v1beta1 {
                         message.grantee = reader.readString();
                         break;
                     case 3:
-                        reader.readMessage(message.allowance, () => message.allowance = dependency_2.google.protobuf.Any.deserialize(reader));
+                        reader.readMessage(message.allowance, () => message.allowance = dependency_1.google.protobuf.Any.deserialize(reader));
                         break;
                     default: reader.skipField();
                 }
@@ -123,9 +123,10 @@ export namespace cosmos.feegrant.v1beta1 {
         }
     }
     export class MsgGrantAllowanceResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -162,12 +163,13 @@ export namespace cosmos.feegrant.v1beta1 {
         }
     }
     export class MsgRevokeAllowance extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             granter?: string;
             grantee?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("granter" in data && data.granter != undefined) {
                     this.granter = data.granter;
@@ -251,9 +253,10 @@ export namespace cosmos.feegrant.v1beta1 {
         }
     }
     export class MsgRevokeAllowanceResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {

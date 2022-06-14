@@ -1,0 +1,12 @@
+syntax = "proto3";
+package hupayxcom.multicoinsend.multicoinsend;
+
+import "gogoproto/gogo.proto";
+
+option go_package = "github.com/hupayx-com/multiCoinSend/x/multicoinsend/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (gogoproto.goproto_stringer) = false;
+  
+}

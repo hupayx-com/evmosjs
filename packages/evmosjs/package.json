@@ -27,6 +27,8 @@
   },
   "dependencies": {
     "@metamask/eth-sig-util": "^4.0.1",
+    "@cosmjs/crypto": "0.28.4",
+    "@cosmjs/amino": "^0.28.4",
     "@tharsis/address-converter": "^0.1.7",
     "@tharsis/eip712": "^0.2.1",
     "@tharsis/proto": "^0.1.15",

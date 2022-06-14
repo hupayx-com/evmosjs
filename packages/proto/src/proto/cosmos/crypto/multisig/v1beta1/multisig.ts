@@ -9,11 +9,12 @@ import * as dependency_1 from "./../../../../gogoproto/gogo";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.crypto.multisig.v1beta1 {
     export class MultiSignature extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             signatures?: Uint8Array[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("signatures" in data && data.signatures != undefined) {
                     this.signatures = data.signatures;
@@ -75,12 +76,13 @@ export namespace cosmos.crypto.multisig.v1beta1 {
         }
     }
     export class CompactBitArray extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             extra_bits_stored?: number;
             elems?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("extra_bits_stored" in data && data.extra_bits_stored != undefined) {
                     this.extra_bits_stored = data.extra_bits_stored;

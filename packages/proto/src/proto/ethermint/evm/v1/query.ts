@@ -14,11 +14,12 @@ import * as dependency_6 from "./../../../google/protobuf/timestamp";
 import * as pb_1 from "google-protobuf";
 export namespace ethermint.evm.v1 {
     export class QueryAccountRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             address?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("address" in data && data.address != undefined) {
                     this.address = data.address;
@@ -80,13 +81,14 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class QueryAccountResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             balance?: string;
             code_hash?: string;
             nonce?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("balance" in data && data.balance != undefined) {
                     this.balance = data.balance;
@@ -192,11 +194,12 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class QueryCosmosAccountRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             address?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("address" in data && data.address != undefined) {
                     this.address = data.address;
@@ -258,13 +261,14 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class QueryCosmosAccountResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             cosmos_address?: string;
             sequence?: number;
             account_number?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("cosmos_address" in data && data.cosmos_address != undefined) {
                     this.cosmos_address = data.cosmos_address;
@@ -370,11 +374,12 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class QueryValidatorAccountRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             cons_address?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("cons_address" in data && data.cons_address != undefined) {
                     this.cons_address = data.cons_address;
@@ -436,13 +441,14 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class QueryValidatorAccountResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             account_address?: string;
             sequence?: number;
             account_number?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("account_address" in data && data.account_address != undefined) {
                     this.account_address = data.account_address;
@@ -548,11 +554,12 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class QueryBalanceRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             address?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("address" in data && data.address != undefined) {
                     this.address = data.address;
@@ -614,11 +621,12 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class QueryBalanceResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             balance?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("balance" in data && data.balance != undefined) {
                     this.balance = data.balance;
@@ -680,12 +688,13 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class QueryStorageRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             address?: string;
             key?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("address" in data && data.address != undefined) {
                     this.address = data.address;
@@ -769,11 +778,12 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class QueryStorageResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             value?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("value" in data && data.value != undefined) {
                     this.value = data.value;
@@ -835,11 +845,12 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class QueryCodeRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             address?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("address" in data && data.address != undefined) {
                     this.address = data.address;
@@ -901,11 +912,12 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class QueryCodeResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             code?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("code" in data && data.code != undefined) {
                     this.code = data.code;
@@ -967,12 +979,13 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class QueryTxLogsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             hash?: string;
             pagination?: dependency_2.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("hash" in data && data.hash != undefined) {
                     this.hash = data.hash;
@@ -1056,12 +1069,13 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class QueryTxLogsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             logs?: dependency_4.ethermint.evm.v1.Log[];
             pagination?: dependency_2.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("logs" in data && data.logs != undefined) {
                     this.logs = data.logs;
@@ -1145,9 +1159,10 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class QueryParamsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -1184,11 +1199,12 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class QueryParamsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             params?: dependency_4.ethermint.evm.v1.Params;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("params" in data && data.params != undefined) {
                     this.params = data.params;
@@ -1250,12 +1266,13 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class EthCallRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             args?: Uint8Array;
             gas_cap?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("args" in data && data.args != undefined) {
                     this.args = data.args;
@@ -1339,11 +1356,12 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class EstimateGasResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             gas?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("gas" in data && data.gas != undefined) {
                     this.gas = data.gas;
@@ -1405,6 +1423,7 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class QueryTraceTxRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             msg?: dependency_5.ethermint.evm.v1.MsgEthereumTx;
             tx_index?: number;
@@ -1415,7 +1434,7 @@ export namespace ethermint.evm.v1 {
             block_time?: dependency_6.google.protobuf.Timestamp;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("msg" in data && data.msg != undefined) {
                     this.msg = data.msg;
@@ -1609,11 +1628,12 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class QueryTraceTxResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             data?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("data" in data && data.data != undefined) {
                     this.data = data.data;
@@ -1675,6 +1695,7 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class QueryTraceBlockRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             txs?: dependency_5.ethermint.evm.v1.MsgEthereumTx[];
             trace_config?: dependency_4.ethermint.evm.v1.TraceConfig;
@@ -1683,7 +1704,7 @@ export namespace ethermint.evm.v1 {
             block_time?: dependency_6.google.protobuf.Timestamp;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("txs" in data && data.txs != undefined) {
                     this.txs = data.txs;
@@ -1833,11 +1854,12 @@ export namespace ethermint.evm.v1 {
         }
     }
     export class QueryTraceBlockResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             data?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("data" in data && data.data != undefined) {
                     this.data = data.data;

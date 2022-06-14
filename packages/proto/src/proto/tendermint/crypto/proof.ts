@@ -9,6 +9,7 @@ import * as dependency_1 from "./../../gogoproto/gogo";
 import * as pb_1 from "google-protobuf";
 export namespace tendermint.crypto {
     export class Proof extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             total?: number;
             index?: number;
@@ -16,7 +17,7 @@ export namespace tendermint.crypto {
             aunts?: Uint8Array[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("total" in data && data.total != undefined) {
                     this.total = data.total;
@@ -144,12 +145,13 @@ export namespace tendermint.crypto {
         }
     }
     export class ValueOp extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             key?: Uint8Array;
             proof?: Proof;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("key" in data && data.key != undefined) {
                     this.key = data.key;
@@ -233,13 +235,14 @@ export namespace tendermint.crypto {
         }
     }
     export class DominoOp extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             key?: string;
             input?: string;
             output?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("key" in data && data.key != undefined) {
                     this.key = data.key;
@@ -345,13 +348,14 @@ export namespace tendermint.crypto {
         }
     }
     export class ProofOp extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             type?: string;
             key?: Uint8Array;
             data?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("type" in data && data.type != undefined) {
                     this.type = data.type;
@@ -457,11 +461,12 @@ export namespace tendermint.crypto {
         }
     }
     export class ProofOps extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             ops?: ProofOp[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("ops" in data && data.ops != undefined) {
                     this.ops = data.ops;

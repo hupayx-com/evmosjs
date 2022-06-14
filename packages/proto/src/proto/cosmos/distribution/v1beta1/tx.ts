@@ -10,12 +10,13 @@ import * as dependency_2 from "./../../base/v1beta1/coin";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.distribution.v1beta1 {
     export class MsgSetWithdrawAddress extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             delegator_address?: string;
             withdraw_address?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("delegator_address" in data && data.delegator_address != undefined) {
                     this.delegator_address = data.delegator_address;
@@ -99,9 +100,10 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class MsgSetWithdrawAddressResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -138,12 +140,13 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class MsgWithdrawDelegatorReward extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             delegator_address?: string;
             validator_address?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("delegator_address" in data && data.delegator_address != undefined) {
                     this.delegator_address = data.delegator_address;
@@ -227,9 +230,10 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class MsgWithdrawDelegatorRewardResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -266,11 +270,12 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class MsgWithdrawValidatorCommission extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             validator_address?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("validator_address" in data && data.validator_address != undefined) {
                     this.validator_address = data.validator_address;
@@ -332,9 +337,10 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class MsgWithdrawValidatorCommissionResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -371,12 +377,13 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class MsgFundCommunityPool extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             amount?: dependency_2.cosmos.base.v1beta1.Coin[];
             depositor?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("amount" in data && data.amount != undefined) {
                     this.amount = data.amount;
@@ -460,9 +467,10 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class MsgFundCommunityPoolResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {

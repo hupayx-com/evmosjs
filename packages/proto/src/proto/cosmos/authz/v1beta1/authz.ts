@@ -12,11 +12,12 @@ import * as dependency_4 from "./../../../google/protobuf/any";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.authz.v1beta1 {
     export class GenericAuthorization extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             msg?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("msg" in data && data.msg != undefined) {
                     this.msg = data.msg;
@@ -78,12 +79,13 @@ export namespace cosmos.authz.v1beta1 {
         }
     }
     export class Grant extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             authorization?: dependency_4.google.protobuf.Any;
             expiration?: dependency_2.google.protobuf.Timestamp;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("authorization" in data && data.authorization != undefined) {
                     this.authorization = data.authorization;

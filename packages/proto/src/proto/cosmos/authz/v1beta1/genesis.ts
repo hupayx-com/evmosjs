@@ -12,11 +12,12 @@ import * as dependency_4 from "./../../../cosmos_proto/cosmos";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.authz.v1beta1 {
     export class GenesisState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             authorization?: GrantAuthorization[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("authorization" in data && data.authorization != undefined) {
                     this.authorization = data.authorization;
@@ -78,6 +79,7 @@ export namespace cosmos.authz.v1beta1 {
         }
     }
     export class GrantAuthorization extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             granter?: string;
             grantee?: string;
@@ -85,7 +87,7 @@ export namespace cosmos.authz.v1beta1 {
             expiration?: dependency_1.google.protobuf.Timestamp;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("granter" in data && data.granter != undefined) {
                     this.granter = data.granter;

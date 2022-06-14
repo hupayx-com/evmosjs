@@ -10,9 +10,10 @@ import * as dependency_2 from "./upgrade";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.upgrade.v1beta1 {
     export class QueryCurrentPlanRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -49,11 +50,12 @@ export namespace cosmos.upgrade.v1beta1 {
         }
     }
     export class QueryCurrentPlanResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             plan?: dependency_2.cosmos.upgrade.v1beta1.Plan;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("plan" in data && data.plan != undefined) {
                     this.plan = data.plan;
@@ -115,11 +117,12 @@ export namespace cosmos.upgrade.v1beta1 {
         }
     }
     export class QueryAppliedPlanRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             name?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("name" in data && data.name != undefined) {
                     this.name = data.name;
@@ -181,11 +184,12 @@ export namespace cosmos.upgrade.v1beta1 {
         }
     }
     export class QueryAppliedPlanResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             height?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("height" in data && data.height != undefined) {
                     this.height = data.height;
@@ -248,11 +252,12 @@ export namespace cosmos.upgrade.v1beta1 {
     }
     /** @deprecated*/
     export class QueryUpgradedConsensusStateRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             last_height?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("last_height" in data && data.last_height != undefined) {
                     this.last_height = data.last_height;
@@ -315,11 +320,12 @@ export namespace cosmos.upgrade.v1beta1 {
     }
     /** @deprecated*/
     export class QueryUpgradedConsensusStateResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             upgraded_consensus_state?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("upgraded_consensus_state" in data && data.upgraded_consensus_state != undefined) {
                     this.upgraded_consensus_state = data.upgraded_consensus_state;
@@ -381,11 +387,12 @@ export namespace cosmos.upgrade.v1beta1 {
         }
     }
     export class QueryModuleVersionsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             module_name?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("module_name" in data && data.module_name != undefined) {
                     this.module_name = data.module_name;
@@ -447,11 +454,12 @@ export namespace cosmos.upgrade.v1beta1 {
         }
     }
     export class QueryModuleVersionsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             module_versions?: dependency_2.cosmos.upgrade.v1beta1.ModuleVersion[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("module_versions" in data && data.module_versions != undefined) {
                     this.module_versions = data.module_versions;

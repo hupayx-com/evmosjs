@@ -11,13 +11,14 @@ import * as dependency_3 from "./channel";
 import * as pb_1 from "google-protobuf";
 export namespace ibc.core.channel.v1 {
     export class MsgChannelOpenInit extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             port_id?: string;
             channel?: dependency_3.ibc.core.channel.v1.Channel;
             signer?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("port_id" in data && data.port_id != undefined) {
                     this.port_id = data.port_id;
@@ -123,11 +124,12 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class MsgChannelOpenInitResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             channel_id?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("channel_id" in data && data.channel_id != undefined) {
                     this.channel_id = data.channel_id;
@@ -189,6 +191,7 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class MsgChannelOpenTry extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             port_id?: string;
             previous_channel_id?: string;
@@ -199,7 +202,7 @@ export namespace ibc.core.channel.v1 {
             signer?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("port_id" in data && data.port_id != undefined) {
                     this.port_id = data.port_id;
@@ -393,9 +396,10 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class MsgChannelOpenTryResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -432,6 +436,7 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class MsgChannelOpenAck extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             port_id?: string;
             channel_id?: string;
@@ -442,7 +447,7 @@ export namespace ibc.core.channel.v1 {
             signer?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("port_id" in data && data.port_id != undefined) {
                     this.port_id = data.port_id;
@@ -636,9 +641,10 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class MsgChannelOpenAckResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -675,6 +681,7 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class MsgChannelOpenConfirm extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             port_id?: string;
             channel_id?: string;
@@ -683,7 +690,7 @@ export namespace ibc.core.channel.v1 {
             signer?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("port_id" in data && data.port_id != undefined) {
                     this.port_id = data.port_id;
@@ -833,9 +840,10 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class MsgChannelOpenConfirmResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -872,13 +880,14 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class MsgChannelCloseInit extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             port_id?: string;
             channel_id?: string;
             signer?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("port_id" in data && data.port_id != undefined) {
                     this.port_id = data.port_id;
@@ -984,9 +993,10 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class MsgChannelCloseInitResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -1023,6 +1033,7 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class MsgChannelCloseConfirm extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             port_id?: string;
             channel_id?: string;
@@ -1031,7 +1042,7 @@ export namespace ibc.core.channel.v1 {
             signer?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("port_id" in data && data.port_id != undefined) {
                     this.port_id = data.port_id;
@@ -1181,9 +1192,10 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class MsgChannelCloseConfirmResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -1220,6 +1232,7 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class MsgRecvPacket extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             packet?: dependency_3.ibc.core.channel.v1.Packet;
             proof_commitment?: Uint8Array;
@@ -1227,7 +1240,7 @@ export namespace ibc.core.channel.v1 {
             signer?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("packet" in data && data.packet != undefined) {
                     this.packet = data.packet;
@@ -1355,9 +1368,10 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class MsgRecvPacketResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -1394,6 +1408,7 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class MsgTimeout extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             packet?: dependency_3.ibc.core.channel.v1.Packet;
             proof_unreceived?: Uint8Array;
@@ -1402,7 +1417,7 @@ export namespace ibc.core.channel.v1 {
             signer?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("packet" in data && data.packet != undefined) {
                     this.packet = data.packet;
@@ -1552,9 +1567,10 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class MsgTimeoutResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -1591,6 +1607,7 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class MsgTimeoutOnClose extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             packet?: dependency_3.ibc.core.channel.v1.Packet;
             proof_unreceived?: Uint8Array;
@@ -1600,7 +1617,7 @@ export namespace ibc.core.channel.v1 {
             signer?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("packet" in data && data.packet != undefined) {
                     this.packet = data.packet;
@@ -1772,9 +1789,10 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class MsgTimeoutOnCloseResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -1811,6 +1829,7 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class MsgAcknowledgement extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             packet?: dependency_3.ibc.core.channel.v1.Packet;
             acknowledgement?: Uint8Array;
@@ -1819,7 +1838,7 @@ export namespace ibc.core.channel.v1 {
             signer?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("packet" in data && data.packet != undefined) {
                     this.packet = data.packet;
@@ -1969,9 +1988,10 @@ export namespace ibc.core.channel.v1 {
         }
     }
     export class MsgAcknowledgementResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {

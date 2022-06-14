@@ -10,13 +10,14 @@ import * as dependency_2 from "./../../../gogoproto/gogo";
 import * as pb_1 from "google-protobuf";
 export namespace evmos.incentives.v1 {
     export class GenesisState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             params?: Params;
             incentives?: dependency_1.evmos.incentives.v1.Incentive[];
             gas_meters?: dependency_1.evmos.incentives.v1.GasMeter[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2, 3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2, 3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("params" in data && data.params != undefined) {
                     this.params = data.params;
@@ -122,6 +123,7 @@ export namespace evmos.incentives.v1 {
         }
     }
     export class Params extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             enable_incentives?: boolean;
             allocation_limit?: string;
@@ -129,7 +131,7 @@ export namespace evmos.incentives.v1 {
             reward_scaler?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("enable_incentives" in data && data.enable_incentives != undefined) {
                     this.enable_incentives = data.enable_incentives;

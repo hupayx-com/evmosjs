@@ -13,9 +13,10 @@ import * as dependency_5 from "./distribution";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.distribution.v1beta1 {
     export class QueryParamsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -52,11 +53,12 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class QueryParamsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             params?: dependency_5.cosmos.distribution.v1beta1.Params;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("params" in data && data.params != undefined) {
                     this.params = data.params;
@@ -118,11 +120,12 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class QueryValidatorOutstandingRewardsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             validator_address?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("validator_address" in data && data.validator_address != undefined) {
                     this.validator_address = data.validator_address;
@@ -184,11 +187,12 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class QueryValidatorOutstandingRewardsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             rewards?: dependency_5.cosmos.distribution.v1beta1.ValidatorOutstandingRewards;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("rewards" in data && data.rewards != undefined) {
                     this.rewards = data.rewards;
@@ -250,11 +254,12 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class QueryValidatorCommissionRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             validator_address?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("validator_address" in data && data.validator_address != undefined) {
                     this.validator_address = data.validator_address;
@@ -316,11 +321,12 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class QueryValidatorCommissionResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             commission?: dependency_5.cosmos.distribution.v1beta1.ValidatorAccumulatedCommission;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("commission" in data && data.commission != undefined) {
                     this.commission = data.commission;
@@ -382,6 +388,7 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class QueryValidatorSlashesRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             validator_address?: string;
             starting_height?: number;
@@ -389,7 +396,7 @@ export namespace cosmos.distribution.v1beta1 {
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("validator_address" in data && data.validator_address != undefined) {
                     this.validator_address = data.validator_address;
@@ -517,12 +524,13 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class QueryValidatorSlashesResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             slashes?: dependency_5.cosmos.distribution.v1beta1.ValidatorSlashEvent[];
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("slashes" in data && data.slashes != undefined) {
                     this.slashes = data.slashes;
@@ -606,12 +614,13 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class QueryDelegationRewardsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             delegator_address?: string;
             validator_address?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("delegator_address" in data && data.delegator_address != undefined) {
                     this.delegator_address = data.delegator_address;
@@ -695,11 +704,12 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class QueryDelegationRewardsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             rewards?: dependency_4.cosmos.base.v1beta1.DecCoin[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("rewards" in data && data.rewards != undefined) {
                     this.rewards = data.rewards;
@@ -761,11 +771,12 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class QueryDelegationTotalRewardsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             delegator_address?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("delegator_address" in data && data.delegator_address != undefined) {
                     this.delegator_address = data.delegator_address;
@@ -827,12 +838,13 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class QueryDelegationTotalRewardsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             rewards?: dependency_5.cosmos.distribution.v1beta1.DelegationDelegatorReward[];
             total?: dependency_4.cosmos.base.v1beta1.DecCoin[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("rewards" in data && data.rewards != undefined) {
                     this.rewards = data.rewards;
@@ -916,11 +928,12 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class QueryDelegatorValidatorsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             delegator_address?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("delegator_address" in data && data.delegator_address != undefined) {
                     this.delegator_address = data.delegator_address;
@@ -982,11 +995,12 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class QueryDelegatorValidatorsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             validators?: string[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("validators" in data && data.validators != undefined) {
                     this.validators = data.validators;
@@ -1048,11 +1062,12 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class QueryDelegatorWithdrawAddressRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             delegator_address?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("delegator_address" in data && data.delegator_address != undefined) {
                     this.delegator_address = data.delegator_address;
@@ -1114,11 +1129,12 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class QueryDelegatorWithdrawAddressResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             withdraw_address?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("withdraw_address" in data && data.withdraw_address != undefined) {
                     this.withdraw_address = data.withdraw_address;
@@ -1180,9 +1196,10 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class QueryCommunityPoolRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -1219,11 +1236,12 @@ export namespace cosmos.distribution.v1beta1 {
         }
     }
     export class QueryCommunityPoolResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             pool?: dependency_4.cosmos.base.v1beta1.DecCoin[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("pool" in data && data.pool != undefined) {
                     this.pool = data.pool;

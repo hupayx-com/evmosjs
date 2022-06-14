@@ -1,0 +1,34 @@
+syntax = "proto3";
+import "gogoproto/gogo.proto";
+package hupayxcom.multicoinsend.multicoinsend;
+import "cosmos/base/v1beta1/coin.proto";
+// this line is used by starport scaffolding # proto/tx/import
+
+option go_package = "github.com/hupayx-com/multiCoinSend/x/multicoinsend/types";
+
+// Msg defines the Msg service.
+service Msg {
+      rpc CoinSend(MsgCoinSend) returns (MsgCoinSendResponse);
+// this line is used by starport scaffolding # proto/tx/rpc
+}
+
+message MsgCoinSend {
+  string creator = 1;
+  repeated Receiver receivers = 2  [(gogoproto.nullable) = false];
+}
+
+message Receiver {
+    
+  // option (gogoproto.goproto_stringer) = false;
+
+    string to                                = 1;
+    repeated cosmos.base.v1beta1.Coin amount = 2
+        [(gogoproto.nullable) = false, (gogoproto.castrepeated) = "github.com/cosmos/cosmos-sdk/types.Coins"];
+}
+  
+message MsgCoinSendResponse {
+  string cntValue = 1;
+  string totalAmount = 2;
+}
+
+// this line is used by starport scaffolding # proto/tx/message

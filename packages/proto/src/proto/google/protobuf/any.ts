@@ -9,12 +9,13 @@ import * as dependency_1 from "./../../gogoproto/gogo";
 import * as pb_1 from "google-protobuf";
 export namespace google.protobuf {
     export class Any extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             type_url?: string;
             value?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("type_url" in data && data.type_url != undefined) {
                     this.type_url = data.type_url;

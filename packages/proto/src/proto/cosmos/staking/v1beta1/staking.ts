@@ -21,12 +21,13 @@ export namespace cosmos.staking.v1beta1 {
         BOND_STATUS_BONDED = 3
     }
     export class HistoricalInfo extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             header?: dependency_7.tendermint.types.Header;
             valset?: Validator[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("header" in data && data.header != undefined) {
                     this.header = data.header;
@@ -110,13 +111,14 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class CommissionRates extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             rate?: string;
             max_rate?: string;
             max_change_rate?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("rate" in data && data.rate != undefined) {
                     this.rate = data.rate;
@@ -222,12 +224,13 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class Commission extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             commission_rates?: CommissionRates;
             update_time?: dependency_4.google.protobuf.Timestamp;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("commission_rates" in data && data.commission_rates != undefined) {
                     this.commission_rates = data.commission_rates;
@@ -311,6 +314,7 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class Description extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             moniker?: string;
             identity?: string;
@@ -319,7 +323,7 @@ export namespace cosmos.staking.v1beta1 {
             details?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("moniker" in data && data.moniker != undefined) {
                     this.moniker = data.moniker;
@@ -469,6 +473,7 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class Validator extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             operator_address?: string;
             consensus_pubkey?: dependency_2.google.protobuf.Any;
@@ -483,7 +488,7 @@ export namespace cosmos.staking.v1beta1 {
             min_self_delegation?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("operator_address" in data && data.operator_address != undefined) {
                     this.operator_address = data.operator_address;
@@ -765,11 +770,12 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class ValAddresses extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             addresses?: string[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("addresses" in data && data.addresses != undefined) {
                     this.addresses = data.addresses;
@@ -831,12 +837,13 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class DVPair extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             delegator_address?: string;
             validator_address?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("delegator_address" in data && data.delegator_address != undefined) {
                     this.delegator_address = data.delegator_address;
@@ -920,11 +927,12 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class DVPairs extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             pairs?: DVPair[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("pairs" in data && data.pairs != undefined) {
                     this.pairs = data.pairs;
@@ -986,13 +994,14 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class DVVTriplet extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             delegator_address?: string;
             validator_src_address?: string;
             validator_dst_address?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("delegator_address" in data && data.delegator_address != undefined) {
                     this.delegator_address = data.delegator_address;
@@ -1098,11 +1107,12 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class DVVTriplets extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             triplets?: DVVTriplet[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("triplets" in data && data.triplets != undefined) {
                     this.triplets = data.triplets;
@@ -1164,13 +1174,14 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class Delegation extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             delegator_address?: string;
             validator_address?: string;
             shares?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("delegator_address" in data && data.delegator_address != undefined) {
                     this.delegator_address = data.delegator_address;
@@ -1276,13 +1287,14 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class UnbondingDelegation extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             delegator_address?: string;
             validator_address?: string;
             entries?: UnbondingDelegationEntry[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("delegator_address" in data && data.delegator_address != undefined) {
                     this.delegator_address = data.delegator_address;
@@ -1388,6 +1400,7 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class UnbondingDelegationEntry extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             creation_height?: number;
             completion_time?: dependency_4.google.protobuf.Timestamp;
@@ -1395,7 +1408,7 @@ export namespace cosmos.staking.v1beta1 {
             balance?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("creation_height" in data && data.creation_height != undefined) {
                     this.creation_height = data.creation_height;
@@ -1523,6 +1536,7 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class RedelegationEntry extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             creation_height?: number;
             completion_time?: dependency_4.google.protobuf.Timestamp;
@@ -1530,7 +1544,7 @@ export namespace cosmos.staking.v1beta1 {
             shares_dst?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("creation_height" in data && data.creation_height != undefined) {
                     this.creation_height = data.creation_height;
@@ -1658,6 +1672,7 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class Redelegation extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             delegator_address?: string;
             validator_src_address?: string;
@@ -1665,7 +1680,7 @@ export namespace cosmos.staking.v1beta1 {
             entries?: RedelegationEntry[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("delegator_address" in data && data.delegator_address != undefined) {
                     this.delegator_address = data.delegator_address;
@@ -1793,6 +1808,7 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class Params extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             unbonding_time?: dependency_3.google.protobuf.Duration;
             max_validators?: number;
@@ -1801,7 +1817,7 @@ export namespace cosmos.staking.v1beta1 {
             bond_denom?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("unbonding_time" in data && data.unbonding_time != undefined) {
                     this.unbonding_time = data.unbonding_time;
@@ -1951,12 +1967,13 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class DelegationResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             delegation?: Delegation;
             balance?: dependency_6.cosmos.base.v1beta1.Coin;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("delegation" in data && data.delegation != undefined) {
                     this.delegation = data.delegation;
@@ -2040,12 +2057,13 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class RedelegationEntryResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             redelegation_entry?: RedelegationEntry;
             balance?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("redelegation_entry" in data && data.redelegation_entry != undefined) {
                     this.redelegation_entry = data.redelegation_entry;
@@ -2129,12 +2147,13 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class RedelegationResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             redelegation?: Redelegation;
             entries?: RedelegationEntryResponse[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("redelegation" in data && data.redelegation != undefined) {
                     this.redelegation = data.redelegation;
@@ -2218,12 +2237,13 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class Pool extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             not_bonded_tokens?: string;
             bonded_tokens?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("not_bonded_tokens" in data && data.not_bonded_tokens != undefined) {
                     this.not_bonded_tokens = data.not_bonded_tokens;

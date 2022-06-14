@@ -11,12 +11,13 @@ import * as dependency_3 from "./params";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.params.v1beta1 {
     export class QueryParamsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             subspace?: string;
             key?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("subspace" in data && data.subspace != undefined) {
                     this.subspace = data.subspace;
@@ -100,11 +101,12 @@ export namespace cosmos.params.v1beta1 {
         }
     }
     export class QueryParamsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             param?: dependency_3.cosmos.params.v1beta1.ParamChange;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("param" in data && data.param != undefined) {
                     this.param = data.param;

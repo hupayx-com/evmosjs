@@ -11,6 +11,7 @@ import * as dependency_3 from "./authz";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.authz.v1beta1 {
     export class QueryGrantsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             granter?: string;
             grantee?: string;
@@ -18,7 +19,7 @@ export namespace cosmos.authz.v1beta1 {
             pagination?: dependency_2.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("granter" in data && data.granter != undefined) {
                     this.granter = data.granter;
@@ -146,12 +147,13 @@ export namespace cosmos.authz.v1beta1 {
         }
     }
     export class QueryGrantsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             grants?: dependency_3.cosmos.authz.v1beta1.Grant[];
             pagination?: dependency_2.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("grants" in data && data.grants != undefined) {
                     this.grants = data.grants;

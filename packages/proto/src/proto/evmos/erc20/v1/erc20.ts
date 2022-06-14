@@ -15,6 +15,7 @@ export namespace evmos.erc20.v1 {
         OWNER_EXTERNAL = 2
     }
     export class TokenPair extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             erc20_address?: string;
             denom?: string;
@@ -22,7 +23,7 @@ export namespace evmos.erc20.v1 {
             contract_owner?: Owner;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("erc20_address" in data && data.erc20_address != undefined) {
                     this.erc20_address = data.erc20_address;
@@ -150,13 +151,14 @@ export namespace evmos.erc20.v1 {
         }
     }
     export class RegisterCoinProposal extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             title?: string;
             description?: string;
             metadata?: dependency_2.cosmos.bank.v1beta1.Metadata;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("title" in data && data.title != undefined) {
                     this.title = data.title;
@@ -262,13 +264,14 @@ export namespace evmos.erc20.v1 {
         }
     }
     export class RegisterERC20Proposal extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             title?: string;
             description?: string;
             erc20address?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("title" in data && data.title != undefined) {
                     this.title = data.title;
@@ -374,13 +377,14 @@ export namespace evmos.erc20.v1 {
         }
     }
     export class ToggleTokenRelayProposal extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             title?: string;
             description?: string;
             token?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("title" in data && data.title != undefined) {
                     this.title = data.title;
@@ -486,6 +490,7 @@ export namespace evmos.erc20.v1 {
         }
     }
     export class UpdateTokenPairERC20Proposal extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             title?: string;
             description?: string;
@@ -493,7 +498,7 @@ export namespace evmos.erc20.v1 {
             new_erc20_address?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("title" in data && data.title != undefined) {
                     this.title = data.title;

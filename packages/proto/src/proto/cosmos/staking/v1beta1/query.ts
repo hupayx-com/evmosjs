@@ -12,12 +12,13 @@ import * as dependency_4 from "./staking";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.staking.v1beta1 {
     export class QueryValidatorsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             status?: string;
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("status" in data && data.status != undefined) {
                     this.status = data.status;
@@ -101,12 +102,13 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryValidatorsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             validators?: dependency_4.cosmos.staking.v1beta1.Validator[];
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("validators" in data && data.validators != undefined) {
                     this.validators = data.validators;
@@ -190,11 +192,12 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryValidatorRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             validator_addr?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("validator_addr" in data && data.validator_addr != undefined) {
                     this.validator_addr = data.validator_addr;
@@ -256,11 +259,12 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryValidatorResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             validator?: dependency_4.cosmos.staking.v1beta1.Validator;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("validator" in data && data.validator != undefined) {
                     this.validator = data.validator;
@@ -322,12 +326,13 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryValidatorDelegationsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             validator_addr?: string;
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("validator_addr" in data && data.validator_addr != undefined) {
                     this.validator_addr = data.validator_addr;
@@ -411,12 +416,13 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryValidatorDelegationsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             delegation_responses?: dependency_4.cosmos.staking.v1beta1.DelegationResponse[];
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("delegation_responses" in data && data.delegation_responses != undefined) {
                     this.delegation_responses = data.delegation_responses;
@@ -500,12 +506,13 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryValidatorUnbondingDelegationsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             validator_addr?: string;
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("validator_addr" in data && data.validator_addr != undefined) {
                     this.validator_addr = data.validator_addr;
@@ -589,12 +596,13 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryValidatorUnbondingDelegationsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             unbonding_responses?: dependency_4.cosmos.staking.v1beta1.UnbondingDelegation[];
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("unbonding_responses" in data && data.unbonding_responses != undefined) {
                     this.unbonding_responses = data.unbonding_responses;
@@ -678,12 +686,13 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryDelegationRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             delegator_addr?: string;
             validator_addr?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("delegator_addr" in data && data.delegator_addr != undefined) {
                     this.delegator_addr = data.delegator_addr;
@@ -767,11 +776,12 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryDelegationResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             delegation_response?: dependency_4.cosmos.staking.v1beta1.DelegationResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("delegation_response" in data && data.delegation_response != undefined) {
                     this.delegation_response = data.delegation_response;
@@ -833,12 +843,13 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryUnbondingDelegationRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             delegator_addr?: string;
             validator_addr?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("delegator_addr" in data && data.delegator_addr != undefined) {
                     this.delegator_addr = data.delegator_addr;
@@ -922,11 +933,12 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryUnbondingDelegationResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             unbond?: dependency_4.cosmos.staking.v1beta1.UnbondingDelegation;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("unbond" in data && data.unbond != undefined) {
                     this.unbond = data.unbond;
@@ -988,12 +1000,13 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryDelegatorDelegationsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             delegator_addr?: string;
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("delegator_addr" in data && data.delegator_addr != undefined) {
                     this.delegator_addr = data.delegator_addr;
@@ -1077,12 +1090,13 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryDelegatorDelegationsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             delegation_responses?: dependency_4.cosmos.staking.v1beta1.DelegationResponse[];
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("delegation_responses" in data && data.delegation_responses != undefined) {
                     this.delegation_responses = data.delegation_responses;
@@ -1166,12 +1180,13 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryDelegatorUnbondingDelegationsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             delegator_addr?: string;
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("delegator_addr" in data && data.delegator_addr != undefined) {
                     this.delegator_addr = data.delegator_addr;
@@ -1255,12 +1270,13 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryDelegatorUnbondingDelegationsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             unbonding_responses?: dependency_4.cosmos.staking.v1beta1.UnbondingDelegation[];
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("unbonding_responses" in data && data.unbonding_responses != undefined) {
                     this.unbonding_responses = data.unbonding_responses;
@@ -1344,6 +1360,7 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryRedelegationsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             delegator_addr?: string;
             src_validator_addr?: string;
@@ -1351,7 +1368,7 @@ export namespace cosmos.staking.v1beta1 {
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("delegator_addr" in data && data.delegator_addr != undefined) {
                     this.delegator_addr = data.delegator_addr;
@@ -1479,12 +1496,13 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryRedelegationsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             redelegation_responses?: dependency_4.cosmos.staking.v1beta1.RedelegationResponse[];
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("redelegation_responses" in data && data.redelegation_responses != undefined) {
                     this.redelegation_responses = data.redelegation_responses;
@@ -1568,12 +1586,13 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryDelegatorValidatorsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             delegator_addr?: string;
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("delegator_addr" in data && data.delegator_addr != undefined) {
                     this.delegator_addr = data.delegator_addr;
@@ -1657,12 +1676,13 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryDelegatorValidatorsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             validators?: dependency_4.cosmos.staking.v1beta1.Validator[];
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("validators" in data && data.validators != undefined) {
                     this.validators = data.validators;
@@ -1746,12 +1766,13 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryDelegatorValidatorRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             delegator_addr?: string;
             validator_addr?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("delegator_addr" in data && data.delegator_addr != undefined) {
                     this.delegator_addr = data.delegator_addr;
@@ -1835,11 +1856,12 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryDelegatorValidatorResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             validator?: dependency_4.cosmos.staking.v1beta1.Validator;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("validator" in data && data.validator != undefined) {
                     this.validator = data.validator;
@@ -1901,11 +1923,12 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryHistoricalInfoRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             height?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("height" in data && data.height != undefined) {
                     this.height = data.height;
@@ -1967,11 +1990,12 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryHistoricalInfoResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             hist?: dependency_4.cosmos.staking.v1beta1.HistoricalInfo;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("hist" in data && data.hist != undefined) {
                     this.hist = data.hist;
@@ -2033,9 +2057,10 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryPoolRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -2072,11 +2097,12 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryPoolResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             pool?: dependency_4.cosmos.staking.v1beta1.Pool;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("pool" in data && data.pool != undefined) {
                     this.pool = data.pool;
@@ -2138,9 +2164,10 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryParamsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -2177,11 +2204,12 @@ export namespace cosmos.staking.v1beta1 {
         }
     }
     export class QueryParamsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             params?: dependency_4.cosmos.staking.v1beta1.Params;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("params" in data && data.params != undefined) {
                     this.params = data.params;

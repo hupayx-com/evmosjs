@@ -9,13 +9,14 @@ import * as dependency_1 from "./../../../gogoproto/gogo";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.params.v1beta1 {
     export class ParameterChangeProposal extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             title?: string;
             description?: string;
             changes?: ParamChange[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("title" in data && data.title != undefined) {
                     this.title = data.title;
@@ -121,13 +122,14 @@ export namespace cosmos.params.v1beta1 {
         }
     }
     export class ParamChange extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             subspace?: string;
             key?: string;
             value?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("subspace" in data && data.subspace != undefined) {
                     this.subspace = data.subspace;

@@ -9,13 +9,14 @@ import * as dependency_1 from "./../../../gogoproto/gogo";
 import * as pb_1 from "google-protobuf";
 export namespace evmos.inflation.v1 {
     export class InflationDistribution extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             staking_rewards?: string;
             usage_incentives?: string;
             community_pool?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("staking_rewards" in data && data.staking_rewards != undefined) {
                     this.staking_rewards = data.staking_rewards;
@@ -121,6 +122,7 @@ export namespace evmos.inflation.v1 {
         }
     }
     export class ExponentialCalculation extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             a?: string;
             r?: string;
@@ -129,7 +131,7 @@ export namespace evmos.inflation.v1 {
             max_variance?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("a" in data && data.a != undefined) {
                     this.a = data.a;

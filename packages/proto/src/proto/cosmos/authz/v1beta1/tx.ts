@@ -7,20 +7,19 @@
  * git: https://github.com/thesayyn/protoc-gen-ts */
 import * as dependency_1 from "./../../../cosmos_proto/cosmos";
 import * as dependency_2 from "./../../../gogoproto/gogo";
-import * as dependency_3 from "./../../../google/protobuf/timestamp";
-import * as dependency_4 from "./../../../google/protobuf/any";
-import * as dependency_5 from "./../../base/abci/v1beta1/abci";
-import * as dependency_6 from "./authz";
+import * as dependency_3 from "./../../../google/protobuf/any";
+import * as dependency_4 from "./authz";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.authz.v1beta1 {
     export class MsgGrant extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             granter?: string;
             grantee?: string;
-            grant?: dependency_6.cosmos.authz.v1beta1.Grant;
+            grant?: dependency_4.cosmos.authz.v1beta1.Grant;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("granter" in data && data.granter != undefined) {
                     this.granter = data.granter;
@@ -46,15 +45,15 @@ export namespace cosmos.authz.v1beta1 {
             pb_1.Message.setField(this, 2, value);
         }
         get grant() {
-            return pb_1.Message.getWrapperField(this, dependency_6.cosmos.authz.v1beta1.Grant, 3) as dependency_6.cosmos.authz.v1beta1.Grant;
+            return pb_1.Message.getWrapperField(this, dependency_4.cosmos.authz.v1beta1.Grant, 3) as dependency_4.cosmos.authz.v1beta1.Grant;
         }
-        set grant(value: dependency_6.cosmos.authz.v1beta1.Grant) {
+        set grant(value: dependency_4.cosmos.authz.v1beta1.Grant) {
             pb_1.Message.setWrapperField(this, 3, value);
         }
         static fromObject(data: {
             granter?: string;
             grantee?: string;
-            grant?: ReturnType<typeof dependency_6.cosmos.authz.v1beta1.Grant.prototype.toObject>;
+            grant?: ReturnType<typeof dependency_4.cosmos.authz.v1beta1.Grant.prototype.toObject>;
         }) {
             const message = new MsgGrant({});
             if (data.granter != null) {
@@ -64,7 +63,7 @@ export namespace cosmos.authz.v1beta1 {
                 message.grantee = data.grantee;
             }
             if (data.grant != null) {
-                message.grant = dependency_6.cosmos.authz.v1beta1.Grant.fromObject(data.grant);
+                message.grant = dependency_4.cosmos.authz.v1beta1.Grant.fromObject(data.grant);
             }
             return message;
         }
@@ -72,7 +71,7 @@ export namespace cosmos.authz.v1beta1 {
             const data: {
                 granter?: string;
                 grantee?: string;
-                grant?: ReturnType<typeof dependency_6.cosmos.authz.v1beta1.Grant.prototype.toObject>;
+                grant?: ReturnType<typeof dependency_4.cosmos.authz.v1beta1.Grant.prototype.toObject>;
             } = {};
             if (this.granter != null) {
                 data.granter = this.granter;
@@ -111,7 +110,7 @@ export namespace cosmos.authz.v1beta1 {
                         message.grantee = reader.readString();
                         break;
                     case 3:
-                        reader.readMessage(message.grant, () => message.grant = dependency_6.cosmos.authz.v1beta1.Grant.deserialize(reader));
+                        reader.readMessage(message.grant, () => message.grant = dependency_4.cosmos.authz.v1beta1.Grant.deserialize(reader));
                         break;
                     default: reader.skipField();
                 }
@@ -126,11 +125,12 @@ export namespace cosmos.authz.v1beta1 {
         }
     }
     export class MsgExecResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             results?: Uint8Array[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("results" in data && data.results != undefined) {
                     this.results = data.results;
@@ -192,12 +192,13 @@ export namespace cosmos.authz.v1beta1 {
         }
     }
     export class MsgExec extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             grantee?: string;
-            msgs?: dependency_4.google.protobuf.Any[];
+            msgs?: dependency_3.google.protobuf.Any[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("grantee" in data && data.grantee != undefined) {
                     this.grantee = data.grantee;
@@ -214,34 +215,34 @@ export namespace cosmos.authz.v1beta1 {
             pb_1.Message.setField(this, 1, value);
         }
         get msgs() {
-            return pb_1.Message.getRepeatedWrapperField(this, dependency_4.google.protobuf.Any, 2) as dependency_4.google.protobuf.Any[];
+            return pb_1.Message.getRepeatedWrapperField(this, dependency_3.google.protobuf.Any, 2) as dependency_3.google.protobuf.Any[];
         }
-        set msgs(value: dependency_4.google.protobuf.Any[]) {
+        set msgs(value: dependency_3.google.protobuf.Any[]) {
             pb_1.Message.setRepeatedWrapperField(this, 2, value);
         }
         static fromObject(data: {
             grantee?: string;
-            msgs?: ReturnType<typeof dependency_4.google.protobuf.Any.prototype.toObject>[];
+            msgs?: ReturnType<typeof dependency_3.google.protobuf.Any.prototype.toObject>[];
         }) {
             const message = new MsgExec({});
             if (data.grantee != null) {
                 message.grantee = data.grantee;
             }
             if (data.msgs != null) {
-                message.msgs = data.msgs.map(item => dependency_4.google.protobuf.Any.fromObject(item));
+                message.msgs = data.msgs.map(item => dependency_3.google.protobuf.Any.fromObject(item));
             }
             return message;
         }
         toObject() {
             const data: {
                 grantee?: string;
-                msgs?: ReturnType<typeof dependency_4.google.protobuf.Any.prototype.toObject>[];
+                msgs?: ReturnType<typeof dependency_3.google.protobuf.Any.prototype.toObject>[];
             } = {};
             if (this.grantee != null) {
                 data.grantee = this.grantee;
             }
             if (this.msgs != null) {
-                data.msgs = this.msgs.map((item: dependency_4.google.protobuf.Any) => item.toObject());
+                data.msgs = this.msgs.map((item: dependency_3.google.protobuf.Any) => item.toObject());
             }
             return data;
         }
@@ -252,7 +253,7 @@ export namespace cosmos.authz.v1beta1 {
             if (typeof this.grantee === "string" && this.grantee.length)
                 writer.writeString(1, this.grantee);
             if (this.msgs !== undefined)
-                writer.writeRepeatedMessage(2, this.msgs, (item: dependency_4.google.protobuf.Any) => item.serialize(writer));
+                writer.writeRepeatedMessage(2, this.msgs, (item: dependency_3.google.protobuf.Any) => item.serialize(writer));
             if (!w)
                 return writer.getResultBuffer();
         }
@@ -266,7 +267,7 @@ export namespace cosmos.authz.v1beta1 {
                         message.grantee = reader.readString();
                         break;
                     case 2:
-                        reader.readMessage(message.msgs, () => pb_1.Message.addToRepeatedWrapperField(message, 2, dependency_4.google.protobuf.Any.deserialize(reader), dependency_4.google.protobuf.Any));
+                        reader.readMessage(message.msgs, () => pb_1.Message.addToRepeatedWrapperField(message, 2, dependency_3.google.protobuf.Any.deserialize(reader), dependency_3.google.protobuf.Any));
                         break;
                     default: reader.skipField();
                 }
@@ -281,9 +282,10 @@ export namespace cosmos.authz.v1beta1 {
         }
     }
     export class MsgGrantResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -320,13 +322,14 @@ export namespace cosmos.authz.v1beta1 {
         }
     }
     export class MsgRevoke extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             granter?: string;
             grantee?: string;
             msg_type_url?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("granter" in data && data.granter != undefined) {
                     this.granter = data.granter;
@@ -432,9 +435,10 @@ export namespace cosmos.authz.v1beta1 {
         }
     }
     export class MsgRevokeResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {

@@ -104,8 +104,6 @@ export function createTxMsgSubmitProposal(
 
   const msg = createMsgSubmitProposal(
     params.content,
-    params.denom,
-    params.amount,
     sender.accountAddress,
   )
   const messages = generateMessage(
@@ -121,8 +119,6 @@ export function createTxMsgSubmitProposal(
   // Cosmos
   const msgCosmos = createSubmitProposal(
     params.content,
-    params.amount,
-    params.denom,
     sender.accountAddress,
   )
   const tx = createTransaction(

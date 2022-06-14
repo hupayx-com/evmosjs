@@ -9,6 +9,7 @@ import * as dependency_1 from "./../../../../gogoproto/gogo";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.base.snapshots.v1beta1 {
     export class Snapshot extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             height?: number;
             format?: number;
@@ -17,7 +18,7 @@ export namespace cosmos.base.snapshots.v1beta1 {
             metadata?: Metadata;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("height" in data && data.height != undefined) {
                     this.height = data.height;
@@ -167,11 +168,12 @@ export namespace cosmos.base.snapshots.v1beta1 {
         }
     }
     export class Metadata extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             chunk_hashes?: Uint8Array[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("chunk_hashes" in data && data.chunk_hashes != undefined) {
                     this.chunk_hashes = data.chunk_hashes;

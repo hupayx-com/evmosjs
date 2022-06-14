@@ -12,11 +12,12 @@ import * as dependency_4 from "./../../../../google/api/annotations";
 import * as pb_1 from "google-protobuf";
 export namespace ibc.applications.transfer.v1 {
     export class QueryDenomTraceRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             hash?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("hash" in data && data.hash != undefined) {
                     this.hash = data.hash;
@@ -78,11 +79,12 @@ export namespace ibc.applications.transfer.v1 {
         }
     }
     export class QueryDenomTraceResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             denom_trace?: dependency_3.ibc.applications.transfer.v1.DenomTrace;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("denom_trace" in data && data.denom_trace != undefined) {
                     this.denom_trace = data.denom_trace;
@@ -144,11 +146,12 @@ export namespace ibc.applications.transfer.v1 {
         }
     }
     export class QueryDenomTracesRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             pagination?: dependency_2.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("pagination" in data && data.pagination != undefined) {
                     this.pagination = data.pagination;
@@ -210,12 +213,13 @@ export namespace ibc.applications.transfer.v1 {
         }
     }
     export class QueryDenomTracesResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             denom_traces?: dependency_3.ibc.applications.transfer.v1.DenomTrace[];
             pagination?: dependency_2.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("denom_traces" in data && data.denom_traces != undefined) {
                     this.denom_traces = data.denom_traces;
@@ -299,9 +303,10 @@ export namespace ibc.applications.transfer.v1 {
         }
     }
     export class QueryParamsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -338,11 +343,12 @@ export namespace ibc.applications.transfer.v1 {
         }
     }
     export class QueryParamsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             params?: dependency_3.ibc.applications.transfer.v1.Params;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("params" in data && data.params != undefined) {
                     this.params = data.params;
@@ -404,11 +410,12 @@ export namespace ibc.applications.transfer.v1 {
         }
     }
     export class QueryDenomHashRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             trace?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("trace" in data && data.trace != undefined) {
                     this.trace = data.trace;
@@ -470,11 +477,12 @@ export namespace ibc.applications.transfer.v1 {
         }
     }
     export class QueryDenomHashResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             hash?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("hash" in data && data.hash != undefined) {
                     this.hash = data.hash;

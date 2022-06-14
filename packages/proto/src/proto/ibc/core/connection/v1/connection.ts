@@ -16,6 +16,7 @@ export namespace ibc.core.connection.v1 {
         STATE_OPEN = 3
     }
     export class ConnectionEnd extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             client_id?: string;
             versions?: Version[];
@@ -24,7 +25,7 @@ export namespace ibc.core.connection.v1 {
             delay_period?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("client_id" in data && data.client_id != undefined) {
                     this.client_id = data.client_id;
@@ -174,6 +175,7 @@ export namespace ibc.core.connection.v1 {
         }
     }
     export class IdentifiedConnection extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             id?: string;
             client_id?: string;
@@ -183,7 +185,7 @@ export namespace ibc.core.connection.v1 {
             delay_period?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("id" in data && data.id != undefined) {
                     this.id = data.id;
@@ -355,13 +357,14 @@ export namespace ibc.core.connection.v1 {
         }
     }
     export class Counterparty extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             client_id?: string;
             connection_id?: string;
             prefix?: dependency_2.ibc.core.commitment.v1.MerklePrefix;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("client_id" in data && data.client_id != undefined) {
                     this.client_id = data.client_id;
@@ -467,11 +470,12 @@ export namespace ibc.core.connection.v1 {
         }
     }
     export class ClientPaths extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             paths?: string[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("paths" in data && data.paths != undefined) {
                     this.paths = data.paths;
@@ -533,12 +537,13 @@ export namespace ibc.core.connection.v1 {
         }
     }
     export class ConnectionPaths extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             client_id?: string;
             paths?: string[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("client_id" in data && data.client_id != undefined) {
                     this.client_id = data.client_id;
@@ -622,12 +627,13 @@ export namespace ibc.core.connection.v1 {
         }
     }
     export class Version extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             identifier?: string;
             features?: string[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("identifier" in data && data.identifier != undefined) {
                     this.identifier = data.identifier;
@@ -711,11 +717,12 @@ export namespace ibc.core.connection.v1 {
         }
     }
     export class Params extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             max_expected_time_per_block?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("max_expected_time_per_block" in data && data.max_expected_time_per_block != undefined) {
                     this.max_expected_time_per_block = data.max_expected_time_per_block;

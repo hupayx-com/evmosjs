@@ -10,13 +10,14 @@ import * as dependency_2 from "./../../../../google/protobuf/any";
 import * as pb_1 from "google-protobuf";
 export namespace ibc.core.client.v1 {
     export class MsgCreateClient extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             client_state?: dependency_2.google.protobuf.Any;
             consensus_state?: dependency_2.google.protobuf.Any;
             signer?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("client_state" in data && data.client_state != undefined) {
                     this.client_state = data.client_state;
@@ -122,9 +123,10 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class MsgCreateClientResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -161,13 +163,14 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class MsgUpdateClient extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             client_id?: string;
             header?: dependency_2.google.protobuf.Any;
             signer?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("client_id" in data && data.client_id != undefined) {
                     this.client_id = data.client_id;
@@ -273,9 +276,10 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class MsgUpdateClientResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -312,6 +316,7 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class MsgUpgradeClient extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             client_id?: string;
             client_state?: dependency_2.google.protobuf.Any;
@@ -321,7 +326,7 @@ export namespace ibc.core.client.v1 {
             signer?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("client_id" in data && data.client_id != undefined) {
                     this.client_id = data.client_id;
@@ -493,9 +498,10 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class MsgUpgradeClientResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -532,13 +538,14 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class MsgSubmitMisbehaviour extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             client_id?: string;
             misbehaviour?: dependency_2.google.protobuf.Any;
             signer?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("client_id" in data && data.client_id != undefined) {
                     this.client_id = data.client_id;
@@ -644,9 +651,10 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class MsgSubmitMisbehaviourResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {

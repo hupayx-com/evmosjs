@@ -11,12 +11,13 @@ import * as dependency_3 from "./../../../google/api/annotations";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.feegrant.v1beta1 {
     export class QueryAllowanceRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             granter?: string;
             grantee?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("granter" in data && data.granter != undefined) {
                     this.granter = data.granter;
@@ -100,11 +101,12 @@ export namespace cosmos.feegrant.v1beta1 {
         }
     }
     export class QueryAllowanceResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             allowance?: dependency_1.cosmos.feegrant.v1beta1.Grant;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("allowance" in data && data.allowance != undefined) {
                     this.allowance = data.allowance;
@@ -166,12 +168,13 @@ export namespace cosmos.feegrant.v1beta1 {
         }
     }
     export class QueryAllowancesRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             grantee?: string;
             pagination?: dependency_2.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("grantee" in data && data.grantee != undefined) {
                     this.grantee = data.grantee;
@@ -255,12 +258,13 @@ export namespace cosmos.feegrant.v1beta1 {
         }
     }
     export class QueryAllowancesResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             allowances?: dependency_1.cosmos.feegrant.v1beta1.Grant[];
             pagination?: dependency_2.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("allowances" in data && data.allowances != undefined) {
                     this.allowances = data.allowances;

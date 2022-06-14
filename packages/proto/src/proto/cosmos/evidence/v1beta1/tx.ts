@@ -11,12 +11,13 @@ import * as dependency_3 from "./../../../cosmos_proto/cosmos";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.evidence.v1beta1 {
     export class MsgSubmitEvidence extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             submitter?: string;
             evidence?: dependency_2.google.protobuf.Any;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("submitter" in data && data.submitter != undefined) {
                     this.submitter = data.submitter;
@@ -100,11 +101,12 @@ export namespace cosmos.evidence.v1beta1 {
         }
     }
     export class MsgSubmitEvidenceResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             hash?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("hash" in data && data.hash != undefined) {
                     this.hash = data.hash;

@@ -11,13 +11,14 @@ import * as dependency_3 from "./../../../cosmos/base/v1beta1/coin";
 import * as pb_1 from "google-protobuf";
 export namespace evmos.erc20.v1 {
     export class MsgConvertCoin extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             coin?: dependency_3.cosmos.base.v1beta1.Coin;
             receiver?: string;
             sender?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("coin" in data && data.coin != undefined) {
                     this.coin = data.coin;
@@ -123,9 +124,10 @@ export namespace evmos.erc20.v1 {
         }
     }
     export class MsgConvertCoinResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -162,6 +164,7 @@ export namespace evmos.erc20.v1 {
         }
     }
     export class MsgConvertERC20 extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             contract_address?: string;
             amount?: string;
@@ -169,7 +172,7 @@ export namespace evmos.erc20.v1 {
             sender?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("contract_address" in data && data.contract_address != undefined) {
                     this.contract_address = data.contract_address;
@@ -297,9 +300,10 @@ export namespace evmos.erc20.v1 {
         }
     }
     export class MsgConvertERC20Response extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {

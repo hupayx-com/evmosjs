@@ -13,12 +13,13 @@ import * as dependency_5 from "./bank";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.bank.v1beta1 {
     export class QueryBalanceRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             address?: string;
             denom?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("address" in data && data.address != undefined) {
                     this.address = data.address;
@@ -102,11 +103,12 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class QueryBalanceResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             balance?: dependency_4.cosmos.base.v1beta1.Coin;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("balance" in data && data.balance != undefined) {
                     this.balance = data.balance;
@@ -168,12 +170,13 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class QueryAllBalancesRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             address?: string;
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("address" in data && data.address != undefined) {
                     this.address = data.address;
@@ -257,12 +260,13 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class QueryAllBalancesResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             balances?: dependency_4.cosmos.base.v1beta1.Coin[];
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("balances" in data && data.balances != undefined) {
                     this.balances = data.balances;
@@ -346,11 +350,12 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class QueryTotalSupplyRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("pagination" in data && data.pagination != undefined) {
                     this.pagination = data.pagination;
@@ -412,12 +417,13 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class QueryTotalSupplyResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             supply?: dependency_4.cosmos.base.v1beta1.Coin[];
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("supply" in data && data.supply != undefined) {
                     this.supply = data.supply;
@@ -501,11 +507,12 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class QuerySupplyOfRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             denom?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("denom" in data && data.denom != undefined) {
                     this.denom = data.denom;
@@ -567,11 +574,12 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class QuerySupplyOfResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             amount?: dependency_4.cosmos.base.v1beta1.Coin;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("amount" in data && data.amount != undefined) {
                     this.amount = data.amount;
@@ -633,9 +641,10 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class QueryParamsRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {}) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") { }
         }
         static fromObject(data: {}) {
@@ -672,11 +681,12 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class QueryParamsResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             params?: dependency_5.cosmos.bank.v1beta1.Params;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("params" in data && data.params != undefined) {
                     this.params = data.params;
@@ -738,11 +748,12 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class QueryDenomsMetadataRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageRequest;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("pagination" in data && data.pagination != undefined) {
                     this.pagination = data.pagination;
@@ -804,12 +815,13 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class QueryDenomsMetadataResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             metadatas?: dependency_5.cosmos.bank.v1beta1.Metadata[];
             pagination?: dependency_1.cosmos.base.query.v1beta1.PageResponse;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("metadatas" in data && data.metadatas != undefined) {
                     this.metadatas = data.metadatas;
@@ -893,11 +905,12 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class QueryDenomMetadataRequest extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             denom?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("denom" in data && data.denom != undefined) {
                     this.denom = data.denom;
@@ -959,11 +972,12 @@ export namespace cosmos.bank.v1beta1 {
         }
     }
     export class QueryDenomMetadataResponse extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             metadata?: dependency_5.cosmos.bank.v1beta1.Metadata;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("metadata" in data && data.metadata != undefined) {
                     this.metadata = data.metadata;

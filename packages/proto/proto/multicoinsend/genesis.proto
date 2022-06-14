@@ -1,0 +1,15 @@
+syntax = "proto3";
+package hupayxcom.multicoinsend.multicoinsend;
+
+import "gogoproto/gogo.proto";
+import "multicoinsend/params.proto";
+// this line is used by starport scaffolding # genesis/proto/import
+
+option go_package = "github.com/hupayx-com/multiCoinSend/x/multicoinsend/types";
+
+// GenesisState defines the multicoinsend module's genesis state.
+message GenesisState {
+  Params params = 1 [(gogoproto.nullable) = false];
+  // this line is used by starport scaffolding # genesis/proto/state
+  repeated string accounts = 2;
+}

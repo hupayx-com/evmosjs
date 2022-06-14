@@ -9,12 +9,13 @@ import * as dependency_1 from "./../../../gogoproto/gogo";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.mint.v1beta1 {
     export class Minter extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             inflation?: string;
             annual_provisions?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("inflation" in data && data.inflation != undefined) {
                     this.inflation = data.inflation;
@@ -98,6 +99,7 @@ export namespace cosmos.mint.v1beta1 {
         }
     }
     export class Params extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             mint_denom?: string;
             inflation_rate_change?: string;
@@ -107,7 +109,7 @@ export namespace cosmos.mint.v1beta1 {
             blocks_per_year?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("mint_denom" in data && data.mint_denom != undefined) {
                     this.mint_denom = data.mint_denom;

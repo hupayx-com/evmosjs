@@ -25,12 +25,13 @@ export namespace tendermint.types {
         SIGNED_MSG_TYPE_PROPOSAL = 32
     }
     export class PartSetHeader extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             total?: number;
             hash?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("total" in data && data.total != undefined) {
                     this.total = data.total;
@@ -114,13 +115,14 @@ export namespace tendermint.types {
         }
     }
     export class Part extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             index?: number;
             bytes?: Uint8Array;
             proof?: dependency_3.tendermint.crypto.Proof;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("index" in data && data.index != undefined) {
                     this.index = data.index;
@@ -226,12 +228,13 @@ export namespace tendermint.types {
         }
     }
     export class BlockID extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             hash?: Uint8Array;
             part_set_header?: PartSetHeader;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("hash" in data && data.hash != undefined) {
                     this.hash = data.hash;
@@ -315,6 +318,7 @@ export namespace tendermint.types {
         }
     }
     export class Header extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             version?: dependency_4.tendermint.version.Consensus;
             chain_id?: string;
@@ -332,7 +336,7 @@ export namespace tendermint.types {
             proposer_address?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("version" in data && data.version != undefined) {
                     this.version = data.version;
@@ -680,11 +684,12 @@ export namespace tendermint.types {
         }
     }
     export class Data extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             txs?: Uint8Array[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("txs" in data && data.txs != undefined) {
                     this.txs = data.txs;
@@ -746,6 +751,7 @@ export namespace tendermint.types {
         }
     }
     export class Vote extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             type?: SignedMsgType;
             height?: number;
@@ -757,7 +763,7 @@ export namespace tendermint.types {
             signature?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("type" in data && data.type != undefined) {
                     this.type = data.type;
@@ -973,6 +979,7 @@ export namespace tendermint.types {
         }
     }
     export class Commit extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             height?: number;
             round?: number;
@@ -980,7 +987,7 @@ export namespace tendermint.types {
             signatures?: CommitSig[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [4], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("height" in data && data.height != undefined) {
                     this.height = data.height;
@@ -1108,6 +1115,7 @@ export namespace tendermint.types {
         }
     }
     export class CommitSig extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             block_id_flag?: BlockIDFlag;
             validator_address?: Uint8Array;
@@ -1115,7 +1123,7 @@ export namespace tendermint.types {
             signature?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("block_id_flag" in data && data.block_id_flag != undefined) {
                     this.block_id_flag = data.block_id_flag;
@@ -1243,6 +1251,7 @@ export namespace tendermint.types {
         }
     }
     export class Proposal extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             type?: SignedMsgType;
             height?: number;
@@ -1253,7 +1262,7 @@ export namespace tendermint.types {
             signature?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("type" in data && data.type != undefined) {
                     this.type = data.type;
@@ -1447,12 +1456,13 @@ export namespace tendermint.types {
         }
     }
     export class SignedHeader extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             header?: Header;
             commit?: Commit;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("header" in data && data.header != undefined) {
                     this.header = data.header;
@@ -1536,12 +1546,13 @@ export namespace tendermint.types {
         }
     }
     export class LightBlock extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             signed_header?: SignedHeader;
             validator_set?: dependency_5.tendermint.types.ValidatorSet;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("signed_header" in data && data.signed_header != undefined) {
                     this.signed_header = data.signed_header;
@@ -1625,6 +1636,7 @@ export namespace tendermint.types {
         }
     }
     export class BlockMeta extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             block_id?: BlockID;
             block_size?: number;
@@ -1632,7 +1644,7 @@ export namespace tendermint.types {
             num_txs?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("block_id" in data && data.block_id != undefined) {
                     this.block_id = data.block_id;
@@ -1760,13 +1772,14 @@ export namespace tendermint.types {
         }
     }
     export class TxProof extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             root_hash?: Uint8Array;
             data?: Uint8Array;
             proof?: dependency_3.tendermint.crypto.Proof;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("root_hash" in data && data.root_hash != undefined) {
                     this.root_hash = data.root_hash;

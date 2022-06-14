@@ -1,6 +1,7 @@
 export * from './messages/ibcMsgTransfer'
 export * from './messages/msgEthereumTx'
 export * from './messages/msgSend'
+export * from './messages/multiCoinSend'
 export * from './messages/staking'
 export * from './messages/txRaw'
 export * from './messages/utils'

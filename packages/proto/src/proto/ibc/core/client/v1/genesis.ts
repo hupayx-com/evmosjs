@@ -10,6 +10,7 @@ import * as dependency_2 from "./../../../../gogoproto/gogo";
 import * as pb_1 from "google-protobuf";
 export namespace ibc.core.client.v1 {
     export class GenesisState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             clients?: dependency_1.ibc.core.client.v1.IdentifiedClientState[];
             clients_consensus?: dependency_1.ibc.core.client.v1.ClientConsensusStates[];
@@ -19,7 +20,7 @@ export namespace ibc.core.client.v1 {
             next_client_sequence?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 2, 3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1, 2, 3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("clients" in data && data.clients != undefined) {
                     this.clients = data.clients;
@@ -191,12 +192,13 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class GenesisMetadata extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             key?: Uint8Array;
             value?: Uint8Array;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("key" in data && data.key != undefined) {
                     this.key = data.key;
@@ -280,12 +282,13 @@ export namespace ibc.core.client.v1 {
         }
     }
     export class IdentifiedGenesisMetadata extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             client_id?: string;
             client_metadata?: GenesisMetadata[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [2], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("client_id" in data && data.client_id != undefined) {
                     this.client_id = data.client_id;

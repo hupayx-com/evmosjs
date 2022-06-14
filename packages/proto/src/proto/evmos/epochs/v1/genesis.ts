@@ -11,6 +11,7 @@ import * as dependency_3 from "./../../../google/protobuf/timestamp";
 import * as pb_1 from "google-protobuf";
 export namespace evmos.epochs.v1 {
     export class EpochInfo extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             identifier?: string;
             start_time?: dependency_3.google.protobuf.Timestamp;
@@ -21,7 +22,7 @@ export namespace evmos.epochs.v1 {
             current_epoch_start_height?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("identifier" in data && data.identifier != undefined) {
                     this.identifier = data.identifier;
@@ -215,11 +216,12 @@ export namespace evmos.epochs.v1 {
         }
     }
     export class GenesisState extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             epochs?: EpochInfo[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("epochs" in data && data.epochs != undefined) {
                     this.epochs = data.epochs;

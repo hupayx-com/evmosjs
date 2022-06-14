@@ -11,6 +11,7 @@ import * as dependency_3 from "./../../../google/protobuf/any";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.auth.v1beta1 {
     export class BaseAccount extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             address?: string;
             pub_key?: dependency_3.google.protobuf.Any;
@@ -18,7 +19,7 @@ export namespace cosmos.auth.v1beta1 {
             sequence?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("address" in data && data.address != undefined) {
                     this.address = data.address;
@@ -146,13 +147,14 @@ export namespace cosmos.auth.v1beta1 {
         }
     }
     export class ModuleAccount extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             base_account?: BaseAccount;
             name?: string;
             permissions?: string[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [3], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("base_account" in data && data.base_account != undefined) {
                     this.base_account = data.base_account;
@@ -258,6 +260,7 @@ export namespace cosmos.auth.v1beta1 {
         }
     }
     export class Params extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             max_memo_characters?: number;
             tx_sig_limit?: number;
@@ -266,7 +269,7 @@ export namespace cosmos.auth.v1beta1 {
             sig_verify_cost_secp256k1?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("max_memo_characters" in data && data.max_memo_characters != undefined) {
                     this.max_memo_characters = data.max_memo_characters;

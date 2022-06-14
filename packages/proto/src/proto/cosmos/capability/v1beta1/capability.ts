@@ -9,11 +9,12 @@ import * as dependency_1 from "./../../../gogoproto/gogo";
 import * as pb_1 from "google-protobuf";
 export namespace cosmos.capability.v1beta1 {
     export class Capability extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             index?: number;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("index" in data && data.index != undefined) {
                     this.index = data.index;
@@ -75,12 +76,13 @@ export namespace cosmos.capability.v1beta1 {
         }
     }
     export class Owner extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             module?: string;
             name?: string;
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("module" in data && data.module != undefined) {
                     this.module = data.module;
@@ -164,11 +166,12 @@ export namespace cosmos.capability.v1beta1 {
         }
     }
     export class CapabilityOwners extends pb_1.Message {
+        #one_of_decls = [];
         constructor(data?: any[] | {
             owners?: Owner[];
         }) {
             super();
-            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], []);
+            pb_1.Message.initialize(this, Array.isArray(data) ? data : [], 0, -1, [1], this.#one_of_decls);
             if (!Array.isArray(data) && typeof data == "object") {
                 if ("owners" in data && data.owners != undefined) {
                     this.owners = data.owners;
