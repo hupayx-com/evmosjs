@@ -5,9 +5,9 @@ export const MSG_MULTI_SEND_TYPES = {
     ],
     TypeReceiver: [
       { name: 'to', type: 'string' },
-      { name: 'amount', type: 'TypeCoin[]' },
+      { name: 'amount', type: 'TypeAmount[]' },
     ],
-    TypeCoin: [
+    TypeAmount: [
         {name: 'denom', type: 'string' },
         {name: 'amount', type: 'string' },
     ]
@@ -20,11 +20,18 @@ export const MSG_MULTI_SEND_TYPES = {
     console.log("receivers-------")
     console.log( JSON.stringify(receivers, null, 3))
     console.log("receivers-------")
+
     return {
       type: 'multicoinsend/CoinSend',
       value: {
         creator: creator,
-        receivers: receivers
+        receivers: [{
+          to: receivers[0].to,
+          amount: [{
+            amount: receivers[0].amount[0].amount,
+            denom: receivers[0].amount[0].denom
+          }]
+        }]
       },
     }
   }

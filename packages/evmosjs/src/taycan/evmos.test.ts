@@ -6,6 +6,8 @@ import { Evmos }  from './evmos';
 describe("evmos get test", () => {
     var mnemonic = "balcony write theme rent arrange surround elephant dish observe color long quantum potato rhythm day unlock pink humble beyond square tail beef know tree";
 
+    // var mnemonic = "mail equip setup excess skate crew auction chunk method trouble weekend wonder gown correct regret boil slogan science leader identify pool banner odor present";
+
     const network = new EvmosNetwork(2023, "http://10.30.11.53:1317", "asfl");
 
     it("get test!!!", async() => {
@@ -76,7 +78,7 @@ describe("evmos get test", () => {
 
         receivers.push({
             to:'evmos1xgj9yaup8k5j6zwjym3zl22n894sa5hxlgcw6a',
-            amount : [{denom:'sfl', amount:'1'}]
+            amount : [{denom:'asfl', amount:'1000000000000000000'}]
         });
 
         // console.log(await evmos.sendCoin("evmos1xgj9yaup8k5j6zwjym3zl22n894sa5hxlgcw6a", "2asfl", '', false));

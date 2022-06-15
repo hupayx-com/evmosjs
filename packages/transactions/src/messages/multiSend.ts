@@ -37,7 +37,7 @@ import {
     const types = generateTypes(MSG_MULTI_SEND_TYPES)
 
     const msg = createMsgMultiSend(
-      params.creator,
+      sender.accountAddress,
       params.receivers
     )
 

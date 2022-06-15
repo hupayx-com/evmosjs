@@ -10,12 +10,12 @@ export function createMsgMultiSend(
 
     for (const r of receivers) {
         const amount = new coin.cosmos.base.v1beta1.Coin({
-            denom: r.denom,
-            amount: r.amount,
+            denom: r.amount[0].denom,
+            amount: r.amount[0].amount,
         })
 
         const receiver = new multi.hupayxcom.multicoinsend.multicoinsend.Receiver({
-            to: r.addr,
+            to: r.to,
             amount: [amount],
         });
 

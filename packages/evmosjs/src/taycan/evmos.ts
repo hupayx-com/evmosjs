@@ -20,7 +20,7 @@ import { createMessageMultiSend } from '@tharsis/transactions'
 
 import * as evmosType from './evmosType'
 
-import { Secp256k1, Keccak256 } from '@cosmjs/crypto'
+// import { Secp256k1, Keccak256 } from '@cosmjs/crypto'
 import { encodeSecp256k1Signature } from "@cosmjs/amino";
 
 import { createTxRaw } from '@tharsis/proto';
@@ -67,55 +67,64 @@ export class Evmos {
     }
 
     async broadcastDirect(msg: any) : Promise<any> {
-        // const s : Uint8Array = new Uint8Array(Buffer.from(msg.signDirect.signBytes, "base64"));
-        // const signDocDirect = msg.signDirect.signDocDirect;
-        // const hash = crypto.createHash("sha256").update(signDocDirect.serializeBinary()).digest();
-		// const sig = secp256k1.sign(hash, this.wallet.privateKey);
-        //
+        // // const s : Uint8Array = new Uint8Array(Buffer.from(msg.signDirect.signBytes, "base64"));
+        // // const signDocDirect = msg.signDirect.signDocDirect;
+        // // const hash = crypto.createHash("sha256").update(signDocDirect.serializeBinary()).digest();
+		// // const sig = secp256k1.sign(hash, this.wallet.privateKey);
+        // //
 
-        const hashedMessage = new Keccak256(msg.signDirect.signBytes).digest();
-        const signature = await Secp256k1.createSignature(hashedMessage, this.wallet.privateKey);
-        const signatureBytes = new Uint8Array([...signature.r(32), ...signature.s(32)]);
-        console.log(signatureBytes);
+        // const hashedMessage = new Keccak256(msg.signDirect.signBytes).digest();
+        // const signature = await Secp256k1.createSignature(hashedMessage, this.wallet.privateKey);
+        // const signatureBytes = new Uint8Array([...signature.r(32), ...signature.s(32)]);
+        // console.log(signatureBytes);
+
+        // //-------------
+        // const test = await this.wallet.wallet.signMessage(msg.signDirect.signBytes)
+        // const testByte = Buffer.from(test.substring(2), 'hex')
+        // console.log('---------------- testByte');
+        // console.log(testByte);
+        // //-------------
 
         //-------------
-        const test = await this.wallet.wallet.signMessage(msg.signDirect.signBytes)
-        const testByte = Buffer.from(test.substring(2), 'hex')
-        console.log('---------------- testByte');
-        console.log(testByte);
-        //-------------
-
-        //-------------
-        const test2 = await this.wallet.wallet._signingKey().signDigest(keccak256(Buffer.from(msg.signDirect.signBytes, 'base64')))
+        const test2 = await this.wallet.wallet._signingKey().signDigest(keccak256(msg.signDirect.signDocBytes))
         const splitSignature = BytesUtils.splitSignature(test2);
         const sing = BytesUtils.arrayify(BytesUtils.concat([splitSignature.r, splitSignature.s]));
-        console.log('---------------- test2');
-        console.log(sing);
+        // console.log('---------------- test2');
+        // console.log(sing);
         //-------------
+
+
+        // const signatureTest = Buffer.from('WYtT7FiQsM9zIkBSoVjYJ1WAIWja2R56nPoxKO3YGblp7rp78TCfCo3ivOzvk7Rof5uemxbzx8pJfGlTJmGb4QE=', 'base64')
+
 
         // 공통??
         const stdSignature = encodeSecp256k1Signature(Buffer.from(this.wallet.pubkey, 'base64'), sing);
 
-        console.log(stdSignature.signature);
+        // console.log(stdSignature.signature);
         const txRaw  :any = createTxRaw(msg.signDirect.body.serializeBinary(), msg.signDirect.authInfo.serializeBinary(), [Buffer.from(stdSignature.signature, 'base64')] )
-        console.log(Buffer.from(txRaw.message.serializeBinary()).toString('base64'));
+        // const txRaw  :any = createTxRaw(msg.signDirect.body.serializeBinary(), msg.signDirect.authInfo.serializeBinary(), [Buffer.from('WYtT7FiQsM9zIkBSoVjYJ1WAIWja2R56nPoxKO3YGblp7rp78TCfCo3ivOzvk7Rof5uemxbzx8pJfGlTJmGb4QE=', 'base64')] )
+        // console.log(Buffer.from(txRaw.message.serializeBinary()).toString('base64'));
 
         // console.log('---------------- ether sign');
         // console.log(this.wallet.wallet.signMessage(msg.signDirect.signBytes));
         // console.log('---------------- ether sign');
         console.log('---------------- rawtx');
-        console.log(Buffer.from(txRaw.message.serializeBinary()).toString('base64'));
-        return await this.network.broadcastPostString(Buffer.from(txRaw.message.serializeBinary()).toString('base64'));
-        // return null
+        const rawtx = Buffer.from(txRaw.message.serializeBinary()).toString('base64')
+
+        return await this.network.broadcastPostString(rawtx);
+        return null
     }
 
     async broadcast(msg : any, isSimulate: Boolean = false)  : Promise<any> {
         console.log("signature")
         var signature = signTypedData({"privateKey": this.wallet.privateKey, "data" : msg.eipToSign, "version": SignTypedDataVersion.V4});
+        // console.log(JSON.stringify(signature, null, 3))
         console.log("extension")
         let extension = signatureToWeb3Extension(this.network, this.wallet, signature);
+        // console.log(JSON.stringify(extension, null, 3))
         console.log("rawTx")
         let rawTx = createTxRawEIP712(msg.legacyAmino.body, msg.legacyAmino.authInfo, extension);
+        // console.log(JSON.stringify(rawTx, null, 3))
 
         console.log(isSimulate)
 
@@ -182,6 +191,8 @@ export class Evmos {
         console.log('1')
         console.log(JSON.stringify(msg.signDirect, null, 3))
 
+
+        return await this.broadcastDirect(msg)
         // return await this.broadcast(msg, isSimulate);
     }
 
@@ -201,10 +212,12 @@ export class Evmos {
                 proposer: this.wallet.accountAddress,
         }
 
-        const msg : any = createTxMsgSubmitProposal(this.network, this.wallet, this.network.getFee(), memo, params);
+        const msg : any = createTxMsgSubmitProposal(this.network, this.wallet, this.network.getFee('1000000000000000000'), memo, params);
 
-        // await this.broadcastDirect(msg);
-        return await this.broadcast(msg, false);
+
+
+        return await this.broadcastDirect(msg);
+        // return await this.broadcast(msg, false);
     }
 
     async voteAction(id : number, option : evmosType.VoteOption, memo : string = "", isSimulate: Boolean = false)  : Promise<any> {
@@ -319,7 +332,8 @@ export class Evmos {
         // // console.log( JSON.stringify(msg, null, 3));
         // console.log('createMessage------------------- multi send ###')
         // console.log('broadcast....')
-        return await this.broadcast(msg, isSimulate);
+        // return await this.broadcast(msg, isSimulate);
+        return await this.broadcastDirect(msg);
         // return null
 
     }

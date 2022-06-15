@@ -100,12 +100,18 @@ export function createTxMsgSubmitProposal(
     fee.gas,
     sender.accountAddress,
   )
+
   const types = generateTypes(MSG_SUBMIT_PROPOSAL)
+
+  console.log(JSON.stringify(types));
 
   const msg = createMsgSubmitProposal(
     params.content,
     sender.accountAddress,
   )
+
+  // console.log(JSON.stringify(msg, null, 3));
+
   const messages = generateMessage(
     sender.accountNumber.toString(),
     sender.sequence.toString(),
@@ -121,6 +127,11 @@ export function createTxMsgSubmitProposal(
     params.content,
     sender.accountAddress,
   )
+
+  // console.log(JSON.stringify(msgCosmos.message.toObject(), null, 3));
+  // console.log(JSON.stringify(msgCosmos.message.deserialize(msgCosmos.message.serialize()), null, 3));
+
+
   const tx = createTransaction(
     msgCosmos,
     memo,

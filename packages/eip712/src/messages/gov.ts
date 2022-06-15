@@ -26,8 +26,12 @@ export function createMsgVote(
 export const MSG_SUBMIT_PROPOSAL = {
   MsgValue: [
     { name: 'content', type: 'TypeContent' },
-    // { name: 'initial_deposit', type: 'TypeDeposit[]' },
+    { name: 'initial_deposit', type: 'TypeAmount[]' },
     { name: 'proposer', type: 'string' },
+  ],
+  TypeAmount: [
+    { name: 'denom', type: 'string' },
+    { name: 'amount', type: 'string' },
   ],
   TypeContent: [
     { name: 'value', type: 'TypeValue' },
@@ -36,10 +40,6 @@ export const MSG_SUBMIT_PROPOSAL = {
     { name: 'title', type: 'string' },
     { name: 'description', type: 'string' },
   ],
-  // TypeDeposit: [
-  //   { name: 'denom', type: 'string' },
-  //   { name: 'amount', type: 'string' },
-  // ],
 }
 
 export function createMsgTextProposal(
@@ -65,11 +65,11 @@ export function createMsgSubmitProposal(
     type: 'cosmos-sdk/MsgSubmitProposal',
     value: {
       content: createMsgTextProposal(content.title, content.description),
-      // initial_deposit:[
-      //   {
-      //     amount,
-      //     denom,
-      //   }],
+      initial_deposit:[
+        {
+          amount: "101000000000000000000",
+          denom: "asfl",
+        }],
       proposer,
     },
   }

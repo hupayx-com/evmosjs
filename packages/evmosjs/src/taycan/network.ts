@@ -33,7 +33,7 @@ export class EvmosNetwork implements Network, Chain {
     // public restUrl : string;
     public baseDnome : string;
     public cosmosChainId : string;
-    public gas: string = '21000';
+    public gas: string = '200000';
 
     constructor(chainId : number, rpcUrl : string,  baseDnome: string, id : number = 1) {
         this.chainId = chainId;
@@ -52,12 +52,11 @@ export class EvmosNetwork implements Network, Chain {
         };
 
         let broadcastPost = await fetch(
-            this.rpcUrl,
+            "http://10.30.11.53:26657",
             postOptions
         );
 
         console.log(broadcastPost) ;
-        console.log(broadcastPost.json()) ;
         return broadcastPost.json();
     }
 
