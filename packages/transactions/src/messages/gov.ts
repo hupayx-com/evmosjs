@@ -2,7 +2,7 @@ import {
   createMsgVote as protoCreateMsgVote,
   createSubmitProposal,
   createTransaction,
-} from '@tharsis/proto'
+} from '@taycan/proto'
 
 import {
   createEIP712,
@@ -13,7 +13,7 @@ import {
   MSG_VOTE_TYPES,
   createMsgSubmitProposal,
   MSG_SUBMIT_PROPOSAL,
-} from '@tharsis/eip712'
+} from '@taycan/eip712'
 
 import { Chain, Fee, Sender } from './common'
 
