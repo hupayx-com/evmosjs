@@ -1,9 +1,9 @@
 
-import { generatePostBodyBroadcast, generateEndpointBroadcast, TxToSend} from '@tharsis/provider'
-import {generateEndpointSimulate, generatePostBodySimulate} from '@tharsis/provider'
-import { Chain, Fee } from '@tharsis/transactions';
+import { generatePostBodyBroadcast, generateEndpointBroadcast, TxToSend} from '@taycan/provider'
+import {generateEndpointSimulate, generatePostBodySimulate} from '@taycan/provider'
+import { Chain, Fee } from '@taycan/transactions';
 const fetch = require("node-fetch");
-// import { fetch } from '@tharsis/provider'
+// import { fetch } from '@taycan/provider'
 
 // export const EVMOS_REST = {
 //     ACCOUNT:  `/cosmos/auth/v1beta1/accounts/{}`,

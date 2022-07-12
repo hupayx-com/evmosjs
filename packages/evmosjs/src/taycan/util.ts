@@ -1,4 +1,4 @@
-import { Coin }  from '@tharsis/provider';
+import { Coin }  from '@taycan/provider';
 
 const tokenUnits = {
     baseDenom : "asfl",
@@ -12,7 +12,7 @@ export const formatDenom = (amount: string ): Coin => {
   if(amount.indexOf(tokenUnits.baseDenom) == -1) {
       var amountValue = Number(amount.substring(0, amount.indexOf(tokenUnits.displayDenom)));
       amountValue *= 10 ** tokenUnits.exponent;
-  } 
+  }
 
   return {
       denom: tokenUnits.baseDenom,
