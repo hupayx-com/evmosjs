@@ -1,5 +1,5 @@
 {
-  "name": "evmosjs",
+  "name": "taycanjs",
   "description": "JS and TS libs for Evmos",
   "version": "0.2.1",
   "license": "MIT",
@@ -28,11 +28,11 @@
   "dependencies": {
     "@cosmjs/amino": "^0.28.4",
     "@metamask/eth-sig-util": "^4.0.1",
-    "@tharsis/address-converter": "^0.1.7",
-    "@tharsis/eip712": "^0.2.1",
-    "@tharsis/proto": "^0.1.15",
-    "@tharsis/provider": "^0.2.0",
-    "@tharsis/transactions": "^0.2.1",
+    "@taycan/address-converter": "^0.1.7",
+    "@taycan/eip712": "^0.2.1",
+    "@taycan/proto": "^0.1.15",
+    "@taycan/provider": "^0.2.0",
+    "@taycan/transactions": "^0.2.1",
     "@types/node": "^17.0.21",
     "bignumber.js": "^9.0.2",
     "ethers": "^5.6.8",
