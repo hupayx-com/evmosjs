@@ -5,13 +5,11 @@
  * 이름: 기능의 설명
  *      ??? 이나 영어: 정확한 기능인지 잘 모름 -> 기능이 확인되면 한국어로 설명
  *      $$: pagination 있는 쿼리 (사용 안하면 전체 조회, 필수 아님 선택)
- *      pagination = {
- *          key : string($byte), // 다음 페이지 쿼리 를 시작하기 위해 PageResponse.next_key에 반환된 값 (offset이나 key 중 하나 선택)
- *          offset : string($uint64), // 페이지
- *          limit : string($uint64), // 한 페이지의 나타낼 범위
- *          count_total : boolean($boolean), // ? offset일 때 사용, key는 무시됨
- *          reverse : boolean($boolean) // 내림차순 true
- *      }
+ *      pagination.key : string($byte), // 다음 페이지 쿼리 를 시작하기 위해 PageResponse.next_key에 반환된 값 (offset이나 key 중 하나 선택)
+ *      pagination.offset : string($uint64), // 페이지
+ *      pagination.limit : string($uint64), // 한 페이지의 나타낼 범위
+ *      pagination.count_total : boolean($boolean), // ? offset일 때 사용, key는 무시됨
+ *      pagination.reverse : boolean($boolean) // 내림차순 true
  * url: 실제 호출할 때 사용되는 쿼리
  *
  * 변수: 의미 없음(에러 처리를 위한 임시 선언)

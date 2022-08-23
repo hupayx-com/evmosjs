@@ -148,6 +148,7 @@ export class Evmos {
                 return this.network.callEvmosGet(`/cosmos/auth/v1beta1/accounts/${this.wallet.accountAddress}`);
             }
             case 'balances': { // 잔고조회
+                // 지갑 주소만 가지고 어느 계정 타입인지 모르기에 계정 조회 후 타입 반환
                 const re : any = await this.getEvmosCall('accounts');
                 console.log(re);
                 // @@##$$ 계정 타입이 vesting 계정인지 확인
@@ -278,9 +279,8 @@ export class Evmos {
         // gas를 250000 로 변경하면 최소 수량을 625000000000000000 amount도 변경해야 함
         const msgSimulate : any = createTxMsgUndelegate(this.network, this.wallet, this.network.getFee(), memo, unDelegateParam);
         const re = await this.broadcast(msgSimulate, true);
-        console.log(`11111111111111111111111111111111111111`);
         console.log(re);
-        const msg : any = createTxMsgUndelegate(this.network, this.wallet, this.network.getFee(re.gas_info.gas_used), memo, unDelegateParam);
+        const msg : any = createTxMsgUndelegate(this.network, this.wallet, this.network.getFee('600000000000000000', re.gas_info.gas_used), memo, unDelegateParam);
 
         return await this.broadcast(msg, isSimulate);
     }
@@ -350,7 +350,9 @@ export class Evmos {
 
         await this.initWallet();
         console.log('createMessage------------------- multi send !!!!')
-        const msg : any = createMessageMultiSend(this.network, this.wallet, this.network.getFee(), memo, multiSendParam);
+        const msgSimulate : any = createMessageMultiSend(this.network, this.wallet, this.network.getFee(), memo, multiSendParam);
+        const re = await this.broadcast(msgSimulate, true);
+        const msg : any = createMessageMultiSend(this.network, this.wallet, this.network.getFee(undefined, re.gas_info.gas_used), memo, multiSendParam);
         console.log(isSimulate)
         console.log('1')
         // console.log(JSON.stringify(msg.signDirect, null, 3))

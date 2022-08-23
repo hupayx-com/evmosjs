@@ -2,7 +2,7 @@ import * as addrConverter from '@tharsis/address-converter';
 import { ethers }  from 'ethers';
 import { Sender } from '@tharsis/transactions';
 
-export interface Wallet { // ethers.wallet이 있는데 내용이 중복된다.
+export interface Wallet {
     // mnemonic : string;
     // privateKey : Buffer;
     ethAddress : string;
@@ -10,7 +10,7 @@ export interface Wallet { // ethers.wallet이 있는데 내용이 중복된다.
 }
 
 export class EvmosWallet implements Wallet, Sender {
-    public mnemonic : string; // Wallet
+    private mnemonic : string; // Wallet
     private privateKey : Buffer; // Wallet
     public ethAddress : string; // Wallet
     public wallet: ethers.Wallet;
@@ -34,9 +34,11 @@ export class EvmosWallet implements Wallet, Sender {
 
     public static async init(mnemonic : string = "", pathCnt : string = '0') : Promise<EvmosWallet> {
         let path = `m/44'/60'/0'/0/${pathCnt}`
-        let wallet = ethers.Wallet.fromMnemonic(mnemonic, path);
+        let wallet = null;
         if(mnemonic == "") {
             wallet = ethers.Wallet.createRandom();
+        } else {
+            wallet = ethers.Wallet.fromMnemonic(mnemonic, path);
         }
 
         const ethAddress = wallet.address;
@@ -58,7 +60,9 @@ export class EvmosWallet implements Wallet, Sender {
     public getSender() : Sender {
         return this
     }
-
+    public getMnemonic() : string {
+        return this.mnemonic;
+    }
     public getPrivateKey() : Buffer {
         return this.privateKey;
     }

@@ -13,6 +13,12 @@ export const MSG_MULTI_SEND_TYPES = {
     ]
   }
 
+  /**
+   * TODO
+   * eip712로 다중 전송을 하진 않고 있지만, 사용하게 된다면
+   * to: receivers[0].to 0번 고정이 아닌
+   * 루프로 순회 하면서 체워야 함
+   */
   export function createMsgMultiSend(
     creator: string,
     receivers: any[],
