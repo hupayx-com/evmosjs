@@ -1,7 +1,7 @@
 import {
   createMsgSend as protoMsgSend,
   createTransaction,
-} from '@tharsis/proto'
+} from '@taycan/proto'
 
 import {
   createEIP712,
@@ -10,7 +10,7 @@ import {
   generateTypes,
   createMsgSend,
   MSG_SEND_TYPES,
-} from '@tharsis/eip712'
+} from '@taycan/eip712'
 
 import { Chain, Fee, Sender } from './common'
 

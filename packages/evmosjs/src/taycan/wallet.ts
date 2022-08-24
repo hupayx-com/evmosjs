@@ -1,6 +1,6 @@
-import * as addrConverter from '@tharsis/address-converter';
+import * as addrConverter from '@taycan/address-converter';
 import { ethers }  from 'ethers';
-import { Sender } from '@tharsis/transactions';
+import { Sender } from '@taycan/transactions';
 
 export interface Wallet {
     // mnemonic : string;

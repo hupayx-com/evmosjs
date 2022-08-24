@@ -3,12 +3,12 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-        "evmosjs":["packages/evmosjs"],
-        "@tharsis/address-converter": ["packages/address-converter"],
-        "@tharsis/eip712":["packages/eip712"],
-        "@tharsis/proto":["packages/proto"],
-        "@tharsis/provider":["packages/provider"],
-        "@tharsis/transactions":["packages/transactions"]
+        "taycanjs":["packages/taycanjs"],
+        "@taycan/address-converter": ["packages/address-converter"],
+        "@taycan/eip712":["packages/eip712"],
+        "@taycan/proto":["packages/proto"],
+        "@taycan/provider":["packages/provider"],
+        "@taycan/transactions":["packages/transactions"]
     }
   }
 }

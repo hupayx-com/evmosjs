@@ -2,28 +2,28 @@
 import { EvmosWallet }  from './wallet';
 import { EvmosNetwork }  from './network';
 
-import { createTxRawEIP712, signatureToWeb3Extension } from '@tharsis/transactions'
+import { createTxRawEIP712, signatureToWeb3Extension } from '@taycan/transactions'
 
 import { signTypedData, SignTypedDataVersion } from '@metamask/eth-sig-util';
 
 import { formatDenom }  from './util';
 
-import { Coin }  from '@tharsis/provider';
+import { Coin }  from '@taycan/provider';
 
-import { createMessageSend } from '@tharsis/transactions' // createTxIBCMsgTransfer
+import { createMessageSend } from '@taycan/transactions' // createTxIBCMsgTransfer
 
-import { createTxMsgVote, createTxMsgSubmitProposal } from '@tharsis/transactions' // createTxIBCMsgTransfer
+import { createTxMsgVote, createTxMsgSubmitProposal } from '@taycan/transactions' // createTxIBCMsgTransfer
 
-import { createTxMsgDelegate, createTxMsgUndelegate, createTxMsgBeginRedelegate, createTxMsgWithdrawDelegatorReward, createTxMsgMultipleWithdrawDelegatorReward } from '@tharsis/transactions'
+import { createTxMsgDelegate, createTxMsgUndelegate, createTxMsgBeginRedelegate, createTxMsgWithdrawDelegatorReward, createTxMsgMultipleWithdrawDelegatorReward } from '@taycan/transactions'
 
-import { createMessageMultiSend } from '@tharsis/transactions'
+import { createMessageMultiSend } from '@taycan/transactions'
 
 import * as evmosType from './evmosType'
 
 // import { Secp256k1, Keccak256 } from '@cosmjs/crypto'
 import { encodeSecp256k1Signature } from "@cosmjs/amino";
 
-import { createTxRaw } from '@tharsis/proto';
+import { createTxRaw } from '@taycan/proto';
 import { keccak256, formatUnits } from 'ethers/lib/utils';
 import * as BytesUtils from "@ethersproject/bytes";
 
