@@ -11,14 +11,14 @@ describe("evmos get test", () => {
     const network = new EvmosNetwork(2023, "http://10.30.11.53:1317", "asfl");
 
     it("get test!!!", async() => {
-        const wallet = await EvmosWallet.init(mnemonic, '2');
+        const wallet = await EvmosWallet.init(mnemonic, '0');
         console.log(wallet);
         const evmos = new Evmos(wallet, network);
-        console.log(await evmos.getEvmosCall('address'));
+        // console.log(await evmos.getEvmosCall('address'));
         // console.log('------------ accounts');
         // console.log(await evmos.getEvmosCall('accounts'));
         // console.log('------------ balances');
-        // console.log(await evmos.getEvmosCall('balances'));
+        console.log(await evmos.getEvmosCall('balances'));
         // console.log('------------ proposals');
         // console.log(await evmos.getEvmosCall('proposals', {page: 0, pageLimit: 5}));
         // console.log('------------ proposalTally');
@@ -51,7 +51,7 @@ describe("evmos get test", () => {
     });
 
 
-    it("get test", async() => {
+    it("위임하기", async() => {
         const wallet = await EvmosWallet.init(mnemonic);
         console.log(wallet);
         const evmos = new Evmos(wallet, network);
@@ -59,12 +59,12 @@ describe("evmos get test", () => {
         console.log(await evmos.delegate("evmosvaloper1h84c0nj2z72ma3u5nlql8fy9l07ncfjh4pma0v", "1sfl", '', false));
     });
 
-    it("tx test", async() => {
+    it("코인 전송", async() => {
         const wallet = await EvmosWallet.init(mnemonic);
         console.log(wallet);
         const evmos = new Evmos(wallet, network);
         console.log("--------sendCoin");
-        console.log(await evmos.sendCoin("evmos1t5zfr74gpx98jwey7cpvgey0azug047kegjuah", "2asfl", '', false));
+        console.log(await evmos.sendCoin("evmos1w3xt5cx0gkulxetvetztcj78ft0cwdcp8xjdae", "2asfl", '', false));
 
         // await delay(5000);
 
@@ -81,10 +81,9 @@ describe("evmos get test", () => {
         const wallet = await EvmosWallet.init(mnemonic);
         console.log(wallet);
         const evmos = new Evmos(wallet, network);
-        const title = 'Test Proposal1 asdf';
-        const description = 'My awesome proposal1 asdasdasd';
+        const title = 'Test Proposal1 asdf1';
+        const description = 'My awesome proposal1 asdasdasd1';
         console.log(await evmos.textProposal(title, description, '10sfl'));
-
     });
 
 
@@ -94,7 +93,7 @@ describe("evmos get test", () => {
         const evmos = new Evmos(wallet, network);
         let receivers = [];
 
-        receivers.push({
+        receivers.push({ // amount에 2asfl 안됨 
             to: 'evmos1xgj9yaup8k5j6zwjym3zl22n894sa5hxlgcw6a',
             amount : [{denom: 'asfl', amount:'1000000000000000000'}]
         },
