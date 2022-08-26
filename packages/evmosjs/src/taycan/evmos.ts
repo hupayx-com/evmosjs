@@ -219,8 +219,8 @@ export class Evmos {
         console.log(JSON.stringify(msg.signDirect, null, 3))
         console.log(msg.signDirect.signDocBytes);
 
-        // return await this.broadcastDirect(msg)
-        return await this.broadcast(msg, isSimulate);
+        return await this.broadcastDirect(msg)
+        // return await this.broadcast(msg, isSimulate);
     }
 
 

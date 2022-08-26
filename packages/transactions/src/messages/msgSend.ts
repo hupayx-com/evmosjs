@@ -75,5 +75,6 @@ export function createMessageSend(
     signDirect: tx.signDirect,
     legacyAmino: tx.legacyAmino,
     eipToSign,
+    signDocBytes: tx.signDocBytes
   }
 }
