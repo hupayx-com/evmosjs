@@ -62,9 +62,24 @@ export class Evmos {
     }
 
     async initWallet() {
-        const account = await this.getEvmosCall('accounts');
-        this.wallet.accountNumber = Number((await account).account.base_account.account_number);
-        this.wallet.sequence = Number((await account).account.base_account.sequence);
+      await this.getEvmosCall('accounts').then((item) => {
+        this.wallet.accountNumber = Number(item.account.base_account.account_number);
+        this.wallet.sequence = Number(item.account.base_account.sequence);
+      }).catch(() => {
+        this.wallet.accountNumber = 0;
+        this.wallet.sequence = 0;
+      });
+      // try {
+      //   const account = await this.getEvmosCall('accounts');
+      //   console.log(account);
+      //   this.wallet.accountNumber = Number( account.account.base_account.account_number);
+      //   this.wallet.sequence = Number(account.account.base_account.sequence);
+
+      // } catch (error) {
+      //   console.log(error);
+      //   // this.wallet.accountNumber = 0;
+      //   // this.wallet.sequence = 0;
+      // }
         // console.log("init wallet done")
     }
 
@@ -202,10 +217,10 @@ export class Evmos {
         console.log(isSimulate)
         console.log('1')
         console.log(JSON.stringify(msg.signDirect, null, 3))
+        console.log(msg.signDirect.signDocBytes);
 
-
-        return await this.broadcastDirect(msg)
-        // return await this.broadcast(msg, isSimulate);
+        // return await this.broadcastDirect(msg)
+        return await this.broadcast(msg, isSimulate);
     }
 
 
