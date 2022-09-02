@@ -103,7 +103,7 @@ export function createTxMsgSubmitProposal(
 
   const types = generateTypes(MSG_SUBMIT_PROPOSAL)
 
-  console.log(JSON.stringify(types));
+  // console.log(JSON.stringify(types));
 
   const msg = createMsgSubmitProposal(
     params.content,

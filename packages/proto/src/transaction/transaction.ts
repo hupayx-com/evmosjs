@@ -169,7 +169,7 @@ export function createTransactionWithMultipleMessages(
   const hashDirect = new Keccak(256)
   hashDirect.update(Buffer.from(signDocDirect.serializeBinary()))
   const toSignDirect = hashDirect.digest('binary')
-  console.log(signDocDirect.serializeBinary())
+  // console.log(signDocDirect.serializeBinary())
   return {
     legacyAmino: {
       body,

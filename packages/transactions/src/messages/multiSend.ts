@@ -41,7 +41,7 @@ import {
       params.receivers
     )
 
-    console.log(msg)
+    // console.log(msg)
 
     const messages = generateMessage(
       sender.accountNumber.toString(),
@@ -60,7 +60,7 @@ import {
       params.receivers
     )
 
-    console.log(msgMultiSend)
+    // console.log(msgMultiSend)
 
     const tx = createTransaction(
       msgMultiSend,

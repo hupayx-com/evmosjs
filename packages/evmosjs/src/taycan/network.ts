@@ -56,7 +56,7 @@ export class EvmosNetwork implements Network, Chain {
             postOptions
         );
 
-        console.log(broadcastPost) ;
+        // console.log(broadcastPost) ;
         return broadcastPost.json();
     }
 

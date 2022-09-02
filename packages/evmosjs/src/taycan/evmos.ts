@@ -125,27 +125,26 @@ export class Evmos {
         // console.log('---------------- ether sign');
         // console.log(this.wallet.wallet.signMessage(msg.signDirect.signBytes));
         // console.log('---------------- ether sign');
-        console.log('---------------- rawtx');
+        // console.log('---------------- rawtx');
         const rawtx = Buffer.from(txRaw.message.serializeBinary()).toString('base64')
 
         return await this.network.broadcastPostString(rawtx);
     }
 
     async broadcast(msg : any, isSimulate: Boolean = false)  : Promise<any> {
-        console.log("signature")
+        // console.log("signature")
         var signature = signTypedData({"privateKey": this.wallet.getPrivateKey(), "data" : msg.eipToSign, "version": SignTypedDataVersion.V4});
         // console.log(JSON.stringify(signature, null, 3))
-        console.log("extension")
+        // console.log("extension")
         let extension = signatureToWeb3Extension(this.network, this.wallet, signature);
         // console.log(JSON.stringify(extension, null, 3))
-        console.log("rawTx")
+        // console.log("rawTx")
         let rawTx = createTxRawEIP712(msg.legacyAmino.body, msg.legacyAmino.authInfo, extension);
         // console.log(JSON.stringify(rawTx, null, 3))
 
-        console.log(isSimulate)
 
         if(isSimulate) {
-            console.log(`isSimulate : ${isSimulate}`)
+            // console.log(`isSimulate : ${isSimulate}`)
             let broadcastPost = await this.network.simulatePost(rawTx);
             return broadcastPost
         } else {
@@ -159,18 +158,18 @@ export class Evmos {
     async getEvmosCall(type: String, params: any = {}) :Promise<any> {
         switch (type) {
             case 'accounts': { // 계정조회
-                console.log(type);
+                // console.log(type);
                 return this.network.callEvmosGet(`/cosmos/auth/v1beta1/accounts/${this.wallet.accountAddress}`);
             }
             case 'balances': { // 잔고조회
                 // 지갑 주소만 가지고 어느 계정 타입인지 모르기에 계정 조회 후 타입 반환
                 const re : any = await this.getEvmosCall('accounts');
-                console.log(re);
+                // console.log(re);
                 // @@##$$ 계정 타입이 vesting 계정인지 확인
                 if (re.account?.base_vesting_account) {
                     return await this.vestingBalances(re.account);
                 }
-                console.log(type);
+                // console.log(type);
                 return this.network.callEvmosGet(`/cosmos/bank/v1beta1/balances/${this.wallet.accountAddress}`);
             }
             // case 'proposals': // 제안 전체 목록 @@
@@ -214,10 +213,10 @@ export class Evmos {
         }
         await this.initWallet(); // sequence
         const msg : any = createMessageSend(this.network, this.wallet, this.network.getFee(), memo, sendParams);
-        console.log(isSimulate)
-        console.log('1')
-        console.log(JSON.stringify(msg.signDirect, null, 3))
-        console.log(msg.signDirect.signDocBytes);
+        // console.log(isSimulate)
+        // console.log('1')
+        // console.log(JSON.stringify(msg.signDirect, null, 3))
+        // console.log(msg.signDirect.signDocBytes);
 
         return await this.broadcastDirect(msg)
         // return await this.broadcast(msg, isSimulate);
@@ -270,7 +269,7 @@ export class Evmos {
             denom : coin.denom,
         }
         await this.initWallet();
-        console.log("message start : " + this.wallet.sequence);
+        // console.log("message start : " + this.wallet.sequence);
         const msg : any = createTxMsgDelegate(this.network, this.wallet, this.network.getFee(), memo, delegateParam);
         return await this.broadcast(msg, isSimulate);
     }
@@ -289,12 +288,13 @@ export class Evmos {
         }
 
         await this.initWallet();
-        console.log("message start : " + this.wallet.sequence);
+        // console.log("message start : " + this.wallet.sequence);
         // gas가 200000 이면 부족하여 실패처리 됨, 250000 변경
         // gas를 250000 로 변경하면 최소 수량을 625000000000000000 amount도 변경해야 함
         const msgSimulate : any = createTxMsgUndelegate(this.network, this.wallet, this.network.getFee(), memo, unDelegateParam);
         const re = await this.broadcast(msgSimulate, true);
-        console.log(re);
+        // console.log(`333333333333333333333333333333333333333`);
+        // console.log(re);
         const msg : any = createTxMsgUndelegate(this.network, this.wallet, this.network.getFee('600000000000000000', re.gas_info.gas_used), memo, unDelegateParam);
 
         return await this.broadcast(msg, isSimulate);
@@ -317,7 +317,7 @@ export class Evmos {
         }
 
         await this.initWallet();
-        console.log("message start : " + this.wallet.sequence);
+        // console.log("message start : " + this.wallet.sequence);
         const msg : any = createTxMsgBeginRedelegate(this.network, this.wallet, this.network.getFee(), memo, redelegateParams);
         return await this.broadcast(msg, isSimulate);
     }
@@ -364,12 +364,12 @@ export class Evmos {
         }
 
         await this.initWallet();
-        console.log('createMessage------------------- multi send !!!!')
+        // console.log('createMessage------------------- multi send !!!!')
         const msgSimulate : any = createMessageMultiSend(this.network, this.wallet, this.network.getFee(), memo, multiSendParam);
         const re = await this.broadcast(msgSimulate, true);
         const msg : any = createMessageMultiSend(this.network, this.wallet, this.network.getFee(undefined, re.gas_info.gas_used), memo, multiSendParam);
-        console.log(isSimulate)
-        console.log('1')
+        // console.log(isSimulate)
+        // console.log('1')
         // console.log(JSON.stringify(msg.signDirect, null, 3))
         // console.log('2')
         // console.log(JSON.stringify(msg.legacyAmino, null, 3))
