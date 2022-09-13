@@ -213,7 +213,6 @@ export class Evmos {
         }
         await this.initWallet(); // sequence
         const msg : any = createMessageSend(this.network, this.wallet, this.network.getFee(), memo, sendParams);
-        // console.log(isSimulate)
         // console.log('1')
         // console.log(JSON.stringify(msg.signDirect, null, 3))
         // console.log(msg.signDirect.signDocBytes);
@@ -270,7 +269,12 @@ export class Evmos {
         }
         await this.initWallet();
         // console.log("message start : " + this.wallet.sequence);
-        const msg : any = createTxMsgDelegate(this.network, this.wallet, this.network.getFee(), memo, delegateParam);
+        const msgSimulate : any = createTxMsgUndelegate(this.network, this.wallet, this.network.getFee(), memo, delegateParam);
+        const re = await this.broadcast(msgSimulate, true);
+        const baseFee = await this.baseFees();
+        const feeAmt = new Bignumber(re.gas_info.gas_used).multipliedBy(baseFee).dividedBy(10).toFixed();
+
+        const msg : any = createTxMsgDelegate(this.network, this.wallet, this.network.getFee(feeAmt,re.gas_info.gas_used), memo, delegateParam);
         return await this.broadcast(msg, isSimulate);
     }
 
@@ -289,13 +293,11 @@ export class Evmos {
 
         await this.initWallet();
         // console.log("message start : " + this.wallet.sequence);
-        // gas가 200000 이면 부족하여 실패처리 됨, 250000 변경
-        // gas를 250000 로 변경하면 최소 수량을 625000000000000000 amount도 변경해야 함
         const msgSimulate : any = createTxMsgUndelegate(this.network, this.wallet, this.network.getFee(), memo, unDelegateParam);
         const re = await this.broadcast(msgSimulate, true);
-        // console.log(`333333333333333333333333333333333333333`);
-        // console.log(re);
-        const msg : any = createTxMsgUndelegate(this.network, this.wallet, this.network.getFee('600000000000000000', re.gas_info.gas_used), memo, unDelegateParam);
+        const baseFee = await this.baseFees();
+        const feeAmt = new Bignumber(re.gas_info.gas_used).multipliedBy(baseFee).dividedBy(10).toFixed();
+        const msg : any = createTxMsgUndelegate(this.network, this.wallet, this.network.getFee(feeAmt, re.gas_info.gas_used), memo, unDelegateParam);
 
         return await this.broadcast(msg, isSimulate);
     }
@@ -367,8 +369,10 @@ export class Evmos {
         // console.log('createMessage------------------- multi send !!!!')
         const msgSimulate : any = createMessageMultiSend(this.network, this.wallet, this.network.getFee(), memo, multiSendParam);
         const re = await this.broadcast(msgSimulate, true);
-        const msg : any = createMessageMultiSend(this.network, this.wallet, this.network.getFee(undefined, re.gas_info.gas_used), memo, multiSendParam);
-        // console.log(isSimulate)
+        const baseFee = await this.baseFees();
+        const feeAmt = new Bignumber(re.gas_info.gas_used).multipliedBy(baseFee).dividedBy(10).toFixed();
+        const msg : any = createMessageMultiSend(this.network, this.wallet, this.network.getFee(feeAmt, re.gas_info.gas_used), memo, multiSendParam);
+        console.log(isSimulate)
         // console.log('1')
         // console.log(JSON.stringify(msg.signDirect, null, 3))
         // console.log('2')
@@ -382,6 +386,7 @@ export class Evmos {
         // console.log('broadcast....')
         // return await this.broadcast(msg, isSimulate);
         return await this.broadcastDirect(msg);
+        // return msg
         // return null
     }
 
@@ -420,6 +425,12 @@ export class Evmos {
         return { balances };
     }
 
+    // base_fee
+    async baseFees() {
+      const params = { url: `/ethermint/feemarket/v1/base_fee` }
+      const { base_fee } = await this.getEvmosCall('queries', params);
+      return base_fee;
+    }
 
     // swap -------------------------------------
 

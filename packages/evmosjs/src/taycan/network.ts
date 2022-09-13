@@ -52,7 +52,8 @@ export class EvmosNetwork implements Network, Chain {
         };
 
         let broadcastPost = await fetch(
-            "http://10.30.11.53:26657",
+            //"http://10.30.11.53:26657", // dev
+            "https://taycan-rpc.hupayx.io:26657", // prod
             postOptions
         );
 
@@ -92,7 +93,7 @@ export class EvmosNetwork implements Network, Chain {
     }
 
 
-    public getFee(amount : string = '500000000000000000', gas : string = '200000') : Fee {
+    public getFee(amount : string = '1000000000000000000', gas : string = '200000') : Fee {
         return {
             amount: amount,
             denom: this.baseDnome,
