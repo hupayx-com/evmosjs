@@ -213,6 +213,7 @@ export class Evmos {
         }
         await this.initWallet(); // sequence
         const msg : any = createMessageSend(this.network, this.wallet, this.network.getFee(), memo, sendParams);
+        console.log(isSimulate);
         // console.log('1')
         // console.log(JSON.stringify(msg.signDirect, null, 3))
         // console.log(msg.signDirect.signDocBytes);
