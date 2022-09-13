@@ -1,7 +1,7 @@
 {
   "name": "@taycan/evmosjs",
   "description": "JS and TS libs for Evmos",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "license": "MIT",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
