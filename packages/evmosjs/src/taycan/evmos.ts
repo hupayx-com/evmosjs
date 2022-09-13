@@ -270,7 +270,7 @@ export class Evmos {
         }
         await this.initWallet();
         // console.log("message start : " + this.wallet.sequence);
-        const msgSimulate : any = createTxMsgUndelegate(this.network, this.wallet, this.network.getFee(), memo, delegateParam);
+        const msgSimulate : any = createTxMsgDelegate(this.network, this.wallet, this.network.getFee(), memo, delegateParam);
         const re = await this.broadcast(msgSimulate, true);
         const baseFee = await this.baseFees();
         const feeAmt = new Bignumber(re.gas_info.gas_used).multipliedBy(baseFee).dividedBy(10).toFixed();
