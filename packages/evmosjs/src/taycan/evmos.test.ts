@@ -3,12 +3,17 @@ import { EvmosNetwork }  from './network';
 import { Evmos }  from './evmos';
 // import * as evmosType from './evmosType'
 
+const DEV_WALLET_URL_SFL = 'http://10.30.11.53:1317'
+const DEV_TENDERMINT_URL = 'http://10.30.11.53:26657'
+// const WALLET_URL_SFL = 'https://taycan-rpc.hupayx.io:1317'
+// const TENDERMINT_URL = 'https://taycan-rpc.hupayx.io:26657'
+
 describe("evmos get test", () => {
     var mnemonic = "balcony write theme rent arrange surround elephant dish observe color long quantum potato rhythm day unlock pink humble beyond square tail beef know tree";
 
     // var mnemonic = "mail equip setup excess skate crew auction chunk method trouble weekend wonder gown correct regret boil slogan science leader identify pool banner odor present";
 
-    const network = new EvmosNetwork(2023, "http://10.30.11.53:1317", "asfl");
+    const network = new EvmosNetwork(2023, DEV_WALLET_URL_SFL, "asfl", DEV_TENDERMINT_URL);
 
     it("get test!!!", async() => {
         const wallet = await EvmosWallet.init(mnemonic, '0');
@@ -93,7 +98,7 @@ describe("evmos get test", () => {
         const evmos = new Evmos(wallet, network);
         let receivers = [];
 
-        receivers.push({ // amount에 2asfl 안됨 
+        receivers.push({ // amount에 2asfl 안됨
             to: 'evmos1xgj9yaup8k5j6zwjym3zl22n894sa5hxlgcw6a',
             amount : [{denom: 'asfl', amount:'1000000000000000000'}]
         },
@@ -160,6 +165,13 @@ describe("evmos get test", () => {
         console.log(re);
     });
 
+    it('base_fee 가져오기', async () => {
+        const wallet = await EvmosWallet.init(mnemonic)
+        const evmos = new Evmos(wallet, network)
+        const params = { url: `/ethermint/feemarket/v1/base_fee` }
+        const re = await evmos.getEvmosCall('queries', params)
+        console.log(re)
+    });
 });
 
 // async function delay(ms: number) {

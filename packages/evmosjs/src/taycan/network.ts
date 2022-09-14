@@ -22,6 +22,7 @@ export interface Network {
     rpcUrl : string ;
     // restUrl : string;
     baseDnome : string;
+    tendermintUrl : string;
     broadcastPost(rawTx : TxToSend) : Promise<any>;
     getFee() : Fee;
     callEvmosGet(uri : String) : Promise<any>
@@ -32,14 +33,16 @@ export class EvmosNetwork implements Network, Chain {
     public rpcUrl : string ;
     // public restUrl : string;
     public baseDnome : string;
+    public tendermintUrl : string;
     public cosmosChainId : string;
     public gas: string = '200000';
 
-    constructor(chainId : number, rpcUrl : string,  baseDnome: string, id : number = 1) {
+    constructor(chainId : number, rpcUrl : string,  baseDnome: string, tendermintUrl : string="https://taycan-rpc.hupayx.io:26657", id : number = 1) {
         this.chainId = chainId;
         // this.restUrl = restUrl;
         this.rpcUrl = rpcUrl;
         this.baseDnome = baseDnome;
+        this.tendermintUrl = tendermintUrl;
         this.cosmosChainId = "evmos_"+this.chainId+"-"+id
     }
 
@@ -52,8 +55,7 @@ export class EvmosNetwork implements Network, Chain {
         };
 
         let broadcastPost = await fetch(
-            //"http://10.30.11.53:26657", // dev
-            "https://taycan-rpc.hupayx.io:26657", // prod
+            this.tendermintUrl,
             postOptions
         );
 

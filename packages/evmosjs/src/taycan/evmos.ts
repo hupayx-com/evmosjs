@@ -376,10 +376,14 @@ export class Evmos {
         // console.log('createMessage------------------- multi send !!!!')
         const msgSimulate : any = createMessageMultiSend(this.network, this.wallet, this.network.getFee(), memo, multiSendParam);
         const re = await this.broadcast(msgSimulate, true);
+
         const baseFee = await this.baseFees();
         const feeAmt = new Bignumber(re.gas_info.gas_used).multipliedBy(baseFee).dividedBy(10).toFixed();
         const msg : any = createMessageMultiSend(this.network, this.wallet, this.network.getFee(feeAmt, re.gas_info.gas_used), memo, multiSendParam);
         console.log(isSimulate)
+        console.log(`baseFee: ${baseFee}`);
+        console.log(`gas_used: ${re.gas_info.gas_used}`);
+        console.log(`baseFee:${feeAmt}`);
         // console.log('1')
         // console.log(JSON.stringify(msg.signDirect, null, 3))
         // console.log('2')
