@@ -63,8 +63,14 @@ export class Evmos {
 
     async initWallet() {
       await this.getEvmosCall('accounts').then((item) => {
-        this.wallet.accountNumber = Number(item.account.base_account.account_number);
-        this.wallet.sequence = Number(item.account.base_account.sequence);
+        if (item.account?.base_vesting_account) {
+          console.log(item);
+          this.wallet.accountNumber = Number(item.account.base_vesting_account.base_account.account_number);
+          this.wallet.sequence = Number(item.account.base_vesting_account.base_account.sequence);
+        } else {
+          this.wallet.accountNumber = Number(item.account.base_account.account_number);
+          this.wallet.sequence = Number(item.account.base_account.sequence);
+        }
       }).catch(() => {
         this.wallet.accountNumber = 0;
         this.wallet.sequence = 0;

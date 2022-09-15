@@ -35,7 +35,7 @@ export class EvmosNetwork implements Network, Chain {
     public baseDnome : string;
     public tendermintUrl : string;
     public cosmosChainId : string;
-    public gas: string = '200000';
+    public gas: string = '300000';
 
     constructor(chainId : number, rpcUrl : string,  baseDnome: string, tendermintUrl : string="https://taycan-rpc.hupayx.io:26657", id : number = 1) {
         this.chainId = chainId;
