@@ -257,7 +257,7 @@ export class Evmos {
         console.log(`gas_used: ${re.gas_info.gas_used}`);
         console.log(`baseFee:${feeAmt}`);
 
-        const msg : any = createTxMsgDelegate(this.network, this.wallet, this.network.getFee(feeAmt,re.gas_info.gas_used), memo, delegateParam);
+        const msg : any = createTxMsgDelegate(this.network, this.wallet, this.network.getFee(undefined,re.gas_info.gas_used), memo, delegateParam);
         return await this.broadcast(msg, isSimulate);
     }
 
@@ -283,7 +283,7 @@ export class Evmos {
         console.log(`baseFee: ${baseFee}`);
         console.log(`gas_used: ${re.gas_info.gas_used}`);
         console.log(`baseFee:${feeAmt}`);
-        const msg : any = createTxMsgUndelegate(this.network, this.wallet, this.network.getFee(feeAmt, re.gas_info.gas_used), memo, unDelegateParam);
+        const msg : any = createTxMsgUndelegate(this.network, this.wallet, this.network.getFee(undefined, re.gas_info.gas_used), memo, unDelegateParam);
 
         return await this.broadcast(msg, isSimulate);
     }
