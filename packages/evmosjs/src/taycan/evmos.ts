@@ -24,7 +24,7 @@ import * as evmosType from './evmosType'
 import { encodeSecp256k1Signature } from "@cosmjs/amino";
 
 import { createTxRaw } from '@taycan/proto';
-import { keccak256, formatUnits } from 'ethers/lib/utils';
+import { keccak256 } from 'ethers/lib/utils';
 import * as BytesUtils from "@ethersproject/bytes";
 
 import Bignumber from 'bignumber.js';
@@ -172,27 +172,6 @@ export class Evmos {
                 // console.log(type);
                 return this.network.callEvmosGet(`/cosmos/bank/v1beta1/balances/${this.wallet.accountAddress}`);
             }
-            // case 'proposals': // 제안 전체 목록 @@
-            //     console.log(type);
-            //     return this.network.callEvmosGet(`/cosmos/gov/v1beta1/proposals?pagination.offset=${params.page}&pagination.limit=${params.pageLimit}`);
-            // case 'proposalTally': // 투표현황 @@
-            //     console.log(type);
-            //     return this.network.callEvmosGet(`/cosmos/gov/v1beta1/proposals/${params.proposalId}/tally`);
-            // case 'rewards': // 보상내역 @@
-            //     console.log(type);
-            //     return this.network.callEvmosGet(`/cosmos/distribution/v1beta1/delegators/${this.wallet.accountAddress}/rewards`);
-            // case 'validators': // 검증인 조회 @@
-            //     console.log(type);
-            //     return this.network.callEvmosGet(`/cosmos/staking/v1beta1/validators?pagination.offset=${params.page}&pagination.limit=${params.pageLimit}`);
-            // case 'delegation': // 위임내역 @@
-            //     console.log(type);
-            //     return this.network.callEvmosGet(`/cosmos/staking/v1beta1/delegations/${this.wallet.accountAddress}`);
-            // case 'unDelegations': // 언본딩 @@
-            //     console.log(type);
-            //     return this.network.callEvmosGet(`/cosmos/staking/v1beta1/delegators/${this.wallet.accountAddress}/unbonding_delegations`);
-            // case 'txs': // 트랜잭션 해쉬 조회 @@
-            //     console.log(type);
-            //     return this.network.callEvmosGet(`/cosmos/tx/v1beta1/txs/${params.txs}`);
             case 'queries': // 각종 조회관련 호출 묶음
                 return this.network.callEvmosGet(params.url); // string
         }
@@ -404,34 +383,24 @@ export class Evmos {
     // vesting balance
     async vestingBalances(account: any) {
         console.log('--------------vesting account');
-        /**
-         * 계산 식
-         * 초당 vesting = amount / (end_time - start_time);
-         * vesting amount = (now_time - start_time) * 초당 vesting
-         * 잠긴 수량 = (end_time - now_time) * 초당 vesting
-         */
-        const nowTime : string = String(new Date().getTime()/1000);
         const item = account.base_vesting_account.original_vesting.find((item: { denom: string; amount: any; }) => {
             return item.denom === 'asfl';
         });
-        const amount : string = String(formatUnits(item.amount));
-        // const amount : string = String(item.amount); // vestingAccount.account.base_vesting_account.original_vesting[0].amount // sfl
-        const end_time : string = account.base_vesting_account.end_time;
-        const start_time : string = account.start_time // re.account.start_time;
+        const end_time : string = account.base_vesting_account.end_time + '000';
+        const start_time : string = account.lockup_periods[0].length + '000';
+        const payload = { url: `/evmos/vesting/v1/balances/${account.base_vesting_account.base_account.address}` }
+        const re = await this.getEvmosCall('queries', payload);
+        console.log(re)
 
-        const vesting_ms = (new Bignumber(amount).dividedBy(new Bignumber(end_time).minus(start_time))).toFixed();
-        const vesting_amt = new Bignumber(vesting_ms).multipliedBy(new Bignumber(nowTime).minus(start_time)).toFixed();
-        const vesting_locked_amt = new Bignumber(vesting_ms).multipliedBy(new Bignumber(end_time).minus(nowTime)).toFixed();
-        const vesting_total_amt = new Bignumber(vesting_amt).plus(vesting_locked_amt).toFixed();
-        const balances = [{ // 수량이 asfl인지 sfl인지 확인 해 볼 것
+        const base_symbol = 'asfl';
+        const balances = [{
             type: "vesting",
             denom: item.denom, // 기본 심볼
             start_time, // 시작시간
             end_time, // 종료시간
-            vesting_ms, // 초당 수량
-            vesting_amt, // 가용 수량
-            vesting_locked_amt, // 잠긴 금액
-            vesting_total_amt // 전체 금액
+            unvested_amt: re.unvested.length !== 0 ? re.unvested[0].denom === base_symbol ? re.unvested[0].amount : '0' : '0', // 가용 수량
+            locked_amt: re.locked.length !== 0 ? re.locked[0].denom === base_symbol ? re.locked[0].amount : '0' : '0', // 잠긴 금액
+            total_amt: re.vested.length !== 0 ? re.vested[0].denom === base_symbol ? re.vested[0].amount : '0' : '0' // 전체 금액
         }];
         return { balances };
     }
