@@ -255,15 +255,15 @@ export class Evmos {
         }
         await this.initWallet();
         // console.log("message start : " + this.wallet.sequence);
-        // const msgSimulate : any = createTxMsgDelegate(this.network, this.wallet, this.network.getFee(), memo, delegateParam);
-        // const re = await this.broadcast(msgSimulate, true);
-        // const baseFee = await this.baseFees();
-        // const feeAmt = new Bignumber(re.gas_info.gas_used).multipliedBy(baseFee).dividedBy(10).toFixed();
-        // console.log(`baseFee: ${baseFee}`);
-        // console.log(`gas_used: ${re.gas_info.gas_used}`);
-        // console.log(`baseFee:${feeAmt}`);
+        const msgSimulate : any = createTxMsgDelegate(this.network, this.wallet, this.network.getFee(), memo, delegateParam);
+        const re = await this.broadcast(msgSimulate, true);
+        const baseFee = await this.baseFees();
+        const feeAmt = new Bignumber(re.gas_info.gas_used).multipliedBy(baseFee).dividedBy(10).toFixed();
+        console.log(`baseFee: ${baseFee}`);
+        console.log(`gas_used: ${re.gas_info.gas_used}`);
+        console.log(`baseFee:${feeAmt}`);
 
-        const msg : any = createTxMsgDelegate(this.network, this.wallet, this.network.getFee(), memo, delegateParam);
+        const msg : any = createTxMsgDelegate(this.network, this.wallet, this.network.getFee(undefined, re.gas_info.gas_used), memo, delegateParam);
         return await this.broadcast(msg, isSimulate);
     }
 
@@ -282,14 +282,14 @@ export class Evmos {
 
         await this.initWallet();
         // console.log("message start : " + this.wallet.sequence);
-        // const msgSimulate : any = createTxMsgUndelegate(this.network, this.wallet, this.network.getFee(), memo, unDelegateParam);
-        // const re = await this.broadcast(msgSimulate, true);
-        // const baseFee = await this.baseFees();
-        // const feeAmt = new Bignumber(re.gas_info.gas_used).multipliedBy(baseFee).dividedBy(10).toFixed();
-        // console.log(`baseFee: ${baseFee}`);
-        // console.log(`gas_used: ${re.gas_info.gas_used}`);
-        // console.log(`baseFee:${feeAmt}`);
-        const msg : any = createTxMsgUndelegate(this.network, this.wallet, this.network.getFee(), memo, unDelegateParam);
+        const msgSimulate : any = createTxMsgUndelegate(this.network, this.wallet, this.network.getFee(), memo, unDelegateParam);
+        const re = await this.broadcast(msgSimulate, true);
+        const baseFee = await this.baseFees();
+        const feeAmt = new Bignumber(re.gas_info.gas_used).multipliedBy(baseFee).dividedBy(10).toFixed();
+        console.log(`baseFee: ${baseFee}`);
+        console.log(`gas_used: ${re.gas_info.gas_used}`);
+        console.log(`baseFee:${feeAmt}`);
+        const msg : any = createTxMsgUndelegate(this.network, this.wallet, this.network.getFee(undefined, re.gas_info.gas_used), memo, unDelegateParam);
 
         return await this.broadcast(msg, isSimulate);
     }
