@@ -95,7 +95,7 @@ export class EvmosNetwork implements Network, Chain {
     }
 
 
-    public getFee(amount : string = '1000000000000000000', gas : string = '200000') : Fee {
+    public getFee(amount : string = '1000000000000000000', gas : string = '300000') : Fee {
         return {
             amount: amount,
             denom: this.baseDnome,

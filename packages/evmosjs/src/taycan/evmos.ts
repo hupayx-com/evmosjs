@@ -249,15 +249,15 @@ export class Evmos {
         }
         await this.initWallet();
         // console.log("message start : " + this.wallet.sequence);
-        const msgSimulate : any = createTxMsgDelegate(this.network, this.wallet, this.network.getFee(), memo, delegateParam);
-        const re = await this.broadcast(msgSimulate, true);
-        const baseFee = await this.baseFees();
-        const feeAmt = new Bignumber(re.gas_info.gas_used).multipliedBy(baseFee).dividedBy(10).toFixed();
-        console.log(`baseFee: ${baseFee}`);
-        console.log(`gas_used: ${re.gas_info.gas_used}`);
-        console.log(`baseFee:${feeAmt}`);
+        // const msgSimulate : any = createTxMsgDelegate(this.network, this.wallet, this.network.getFee(), memo, delegateParam);
+        // const re = await this.broadcast(msgSimulate, true);
+        // const baseFee = await this.baseFees();
+        // const feeAmt = new Bignumber(re.gas_info.gas_used).multipliedBy(baseFee).dividedBy(10).toFixed();
+        // console.log(`baseFee: ${baseFee}`);
+        // console.log(`gas_used: ${re.gas_info.gas_used}`);
+        // console.log(`baseFee:${feeAmt}`);
 
-        const msg : any = createTxMsgDelegate(this.network, this.wallet, this.network.getFee(undefined,re.gas_info.gas_used), memo, delegateParam);
+        const msg : any = createTxMsgDelegate(this.network, this.wallet, this.network.getFee(), memo, delegateParam);
         return await this.broadcast(msg, isSimulate);
     }
 
@@ -276,14 +276,14 @@ export class Evmos {
 
         await this.initWallet();
         // console.log("message start : " + this.wallet.sequence);
-        const msgSimulate : any = createTxMsgUndelegate(this.network, this.wallet, this.network.getFee(), memo, unDelegateParam);
-        const re = await this.broadcast(msgSimulate, true);
-        const baseFee = await this.baseFees();
-        const feeAmt = new Bignumber(re.gas_info.gas_used).multipliedBy(baseFee).dividedBy(10).toFixed();
-        console.log(`baseFee: ${baseFee}`);
-        console.log(`gas_used: ${re.gas_info.gas_used}`);
-        console.log(`baseFee:${feeAmt}`);
-        const msg : any = createTxMsgUndelegate(this.network, this.wallet, this.network.getFee(undefined, re.gas_info.gas_used), memo, unDelegateParam);
+        // const msgSimulate : any = createTxMsgUndelegate(this.network, this.wallet, this.network.getFee(), memo, unDelegateParam);
+        // const re = await this.broadcast(msgSimulate, true);
+        // const baseFee = await this.baseFees();
+        // const feeAmt = new Bignumber(re.gas_info.gas_used).multipliedBy(baseFee).dividedBy(10).toFixed();
+        // console.log(`baseFee: ${baseFee}`);
+        // console.log(`gas_used: ${re.gas_info.gas_used}`);
+        // console.log(`baseFee:${feeAmt}`);
+        const msg : any = createTxMsgUndelegate(this.network, this.wallet, this.network.getFee(), memo, unDelegateParam);
 
         return await this.broadcast(msg, isSimulate);
     }
@@ -395,17 +395,17 @@ export class Evmos {
         const { balances: base_balance } = await this.getEvmosCall('queries', balance_payload);
         console.log(base_balance);
         const base_symbol = 'asfl';
-        const balance = base_balance[0].denom === base_symbol ? base_balance[0].amount : '0';
+        const able_amt = base_balance[0].denom === base_symbol ? base_balance[0].amount : '0';
         const locked_amt = re.locked.length !== 0 ? re.locked[0].denom === base_symbol ? re.locked[0].amount : '0' : '0';
         const total_amt = re.vested.length !== 0 ? re.vested[0].denom === base_symbol ? re.vested[0].amount : '0' : '0' // 전체 수량
-        const able_amt = new Bignumber(balance).minus(locked_amt).toFixed();
         const balances = [{
             type: "vesting",
             denom: item.denom, // 기본 심볼
             start_time, // 시작시간
             end_time, // 종료시간
-            able_amt, // 기존 보유 수량 - 잠긴수량
+            able_amt, // 보유 잔고 총 수량 (전송 불가, 스테이킹 가능)
             unvested_amt: re.unvested.length !== 0 ? re.unvested[0].denom === base_symbol ? re.unvested[0].amount : '0' : '0',
+            unlocked_amt: new Bignumber(total_amt).minus(locked_amt).toFixed(), // 해제 수량
             locked_amt, // 잠긴 수량
             total_amt // 전체 수량
         }];
