@@ -397,16 +397,19 @@ export class Evmos {
         const base_symbol = 'asfl';
         const balance = base_balance[0].denom === base_symbol ? base_balance[0].amount : '0';
         const locked_amt = re.locked.length !== 0 ? re.locked[0].denom === base_symbol ? re.locked[0].amount : '0' : '0';
-        const able_amt = new Bignumber(balance).minus(locked_amt).toFixed();
+        const total_amt = re.vested.length !== 0 ? re.vested[0].denom === base_symbol ? re.vested[0].amount : '0' : '0' // 전체 수량
+        const able_amt = new Bignumber(balance).plus(total_amt).minus(locked_amt).toFixed();
+        const able_staking_amt = new Bignumber(balance).plus(total_amt).toFixed();
         const balances = [{
             type: "vesting",
             denom: item.denom, // 기본 심볼
             start_time, // 시작시간
             end_time, // 종료시간
-            able_amt, // 기존 보유 잔액 - 잠긴금액
+            able_amt, // 기존 보유 수량 - 잠긴수량
             unvested_amt: re.unvested.length !== 0 ? re.unvested[0].denom === base_symbol ? re.unvested[0].amount : '0' : '0',
-            locked_amt, // 잠긴 금액
-            total_amt: re.vested.length !== 0 ? re.vested[0].denom === base_symbol ? re.vested[0].amount : '0' : '0' // 전체 금액
+            locked_amt, // 잠긴 수량
+            able_staking_amt, // 스테이킹 가능 물량
+            total_amt // 전체 수량
         }];
         return { balances };
     }
