@@ -391,15 +391,21 @@ export class Evmos {
         const payload = { url: `/evmos/vesting/v1/balances/${account.base_vesting_account.base_account.address}` }
         const re = await this.getEvmosCall('queries', payload);
         console.log(re)
-
+        const balance_rayload = { url: `/cosmos/bank/v1beta1/balances/${account.base_vesting_account.base_account.address}` }
+        const { balances: base_balance } = await this.getEvmosCall('queries', balance_rayload);
+        console.log(base_balance);
         const base_symbol = 'asfl';
+        const balance = base_balance[0].denom === base_symbol ? base_balance[0].amount : '0';
+        const locked_amt = re.locked.length !== 0 ? re.locked[0].denom === base_symbol ? re.locked[0].amount : '0' : '0';
+        const able_amt = new Bignumber(balance).minus(locked_amt).toFixed();
         const balances = [{
             type: "vesting",
             denom: item.denom, // 기본 심볼
             start_time, // 시작시간
             end_time, // 종료시간
-            unvested_amt: re.unvested.length !== 0 ? re.unvested[0].denom === base_symbol ? re.unvested[0].amount : '0' : '0', // 가용 수량
-            locked_amt: re.locked.length !== 0 ? re.locked[0].denom === base_symbol ? re.locked[0].amount : '0' : '0', // 잠긴 금액
+            able_amt, // 기존 보유 잔액 - 잠긴금액
+            unvested_amt: re.unvested.length !== 0 ? re.unvested[0].denom === base_symbol ? re.unvested[0].amount : '0' : '0',
+            locked_amt, // 잠긴 금액
             total_amt: re.vested.length !== 0 ? re.vested[0].denom === base_symbol ? re.vested[0].amount : '0' : '0' // 전체 금액
         }];
         return { balances };
