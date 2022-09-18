@@ -29,17 +29,6 @@ import * as BytesUtils from "@ethersproject/bytes";
 
 import Bignumber from 'bignumber.js';
 
-// interface txParam {
-//     fee: string,
-//     memo: string,
-//     isSimulate: boolean
-// }
-
-// let txBaseParam: txParam = {
-//     fee : '400000000000000000',
-//     memo : "",
-//     isSimulate : false
-// }
 
 export class Evmos {
     public wallet :  EvmosWallet;
@@ -75,18 +64,6 @@ export class Evmos {
         this.wallet.accountNumber = 0;
         this.wallet.sequence = 0;
       });
-      // try {
-      //   const account = await this.getEvmosCall('accounts');
-      //   console.log(account);
-      //   this.wallet.accountNumber = Number( account.account.base_account.account_number);
-      //   this.wallet.sequence = Number(account.account.base_account.sequence);
-
-      // } catch (error) {
-      //   console.log(error);
-      //   // this.wallet.accountNumber = 0;
-      //   // this.wallet.sequence = 0;
-      // }
-        // console.log("init wallet done")
     }
 
     async broadcastDirect(msg: any) : Promise<any> {// multisend, proposal에서만 사용
@@ -170,8 +147,6 @@ export class Evmos {
             case 'balances': { // 잔고조회
                 // 지갑 주소만 가지고 어느 계정 타입인지 모르기에 계정 조회 후 타입 반환
                 const re : any = await this.getEvmosCall('accounts');
-                // console.log(re);
-                // @@##$$ 계정 타입이 vesting 계정인지 확인
                 if (re.account?.base_vesting_account) {
                     return await this.vestingBalances(re.account);
                 }
@@ -199,10 +174,6 @@ export class Evmos {
         await this.initWallet(); // sequence
         const msg : any = createMessageSend(this.network, this.wallet, this.network.getFee(), memo, sendParams);
         console.log(isSimulate);
-        // console.log('1')
-        // console.log(JSON.stringify(msg.signDirect, null, 3))
-        // console.log(msg.signDirect.signDocBytes);
-
         return await this.broadcastDirect(msg)
         // return await this.broadcast(msg, isSimulate);
     }
@@ -211,7 +182,6 @@ export class Evmos {
     //gov -----------------------------------------
 
     async textProposal(title: string, description: string, coinStr : string, memo : string = "")  : Promise<any> {
-
         await this.initWallet(); // sequence
         const coin : Coin = formatDenom(coinStr);
         const params = {
@@ -255,15 +225,7 @@ export class Evmos {
         }
         await this.initWallet();
         // console.log("message start : " + this.wallet.sequence);
-        const msgSimulate : any = createTxMsgDelegate(this.network, this.wallet, this.network.getFee(), memo, delegateParam);
-        const re = await this.broadcast(msgSimulate, true);
-        const baseFee = await this.baseFees();
-        const feeAmt = new Bignumber(re.gas_info.gas_used).multipliedBy(baseFee).dividedBy(10).toFixed();
-        console.log(`baseFee: ${baseFee}`);
-        console.log(`gas_used: ${re.gas_info.gas_used}`);
-        console.log(`baseFee:${feeAmt}`);
-
-        const msg : any = createTxMsgDelegate(this.network, this.wallet, this.network.getFee(undefined, re.gas_info.gas_used), memo, delegateParam);
+        const msg = await this.simulateData(createTxMsgDelegate, memo, delegateParam, false);
         return await this.broadcast(msg, isSimulate);
     }
 
@@ -282,15 +244,7 @@ export class Evmos {
 
         await this.initWallet();
         // console.log("message start : " + this.wallet.sequence);
-        const msgSimulate : any = createTxMsgUndelegate(this.network, this.wallet, this.network.getFee(), memo, unDelegateParam);
-        const re = await this.broadcast(msgSimulate, true);
-        const baseFee = await this.baseFees();
-        const feeAmt = new Bignumber(re.gas_info.gas_used).multipliedBy(baseFee).dividedBy(10).toFixed();
-        console.log(`baseFee: ${baseFee}`);
-        console.log(`gas_used: ${re.gas_info.gas_used}`);
-        console.log(`baseFee:${feeAmt}`);
-        const msg : any = createTxMsgUndelegate(this.network, this.wallet, this.network.getFee(undefined, re.gas_info.gas_used), memo, unDelegateParam);
-
+        const msg = await this.simulateData(createTxMsgUndelegate, memo, unDelegateParam, false);
         return await this.broadcast(msg, isSimulate);
     }
 
@@ -319,7 +273,7 @@ export class Evmos {
     async withdrawReward(
      validatorAddr: string,
      memo: string = "",
-     isSimulate: Boolean = false) {
+     isSimulate: Boolean = false): Promise<any>  {
 
         const rewardParam = {
             delegatorAddress: this.wallet.accountAddress,
@@ -335,14 +289,15 @@ export class Evmos {
     async multiWithdrawReward(
         validatorAddresses: string[],
         memo: string = "",
-        isSimulate: Boolean = false) {
+        isSimulate: Boolean = false) : Promise<any> {
 
         const rewardParam = {
             delegatorAddress: this.wallet.accountAddress,
             validatorAddresses: validatorAddresses
         }
+
         await this.initWallet();
-        const msg : any = createTxMsgMultipleWithdrawDelegatorReward(this.network, this.wallet, this.network.getFee(), memo, rewardParam);
+        const msg = await this.simulateData(createTxMsgMultipleWithdrawDelegatorReward, memo, rewardParam, false);
         return await this.broadcast(msg, isSimulate);
       }
 
@@ -357,59 +312,61 @@ export class Evmos {
             receivers: receivers,
         }
 
+        console.log(isSimulate);
         await this.initWallet();
         // console.log('createMessage------------------- multi send !!!!')
-        const msgSimulate : any = createMessageMultiSend(this.network, this.wallet, this.network.getFee(), memo, multiSendParam);
-        const re = await this.broadcast(msgSimulate, true);
-
-        const baseFee = await this.baseFees();
-        const feeAmt = new Bignumber(re.gas_info.gas_used).multipliedBy(baseFee).dividedBy(10).toFixed();
-        const msg : any = createMessageMultiSend(this.network, this.wallet, this.network.getFee(feeAmt, re.gas_info.gas_used), memo, multiSendParam);
-        console.log(isSimulate)
-        console.log(`baseFee: ${baseFee}`);
-        console.log(`gas_used: ${re.gas_info.gas_used}`);
-        console.log(`baseFee:${feeAmt}`);
-        // console.log('1')
-        // console.log(JSON.stringify(msg.signDirect, null, 3))
-        // console.log('2')
-        // console.log(JSON.stringify(msg.legacyAmino, null, 3))
-        // console.log('3')
-        // console.log(JSON.stringify(msg.eipToSign, null, 3))
-
-
-        // // console.log( JSON.stringify(msg, null, 3));
-        // console.log('createMessage------------------- multi send ###')
-        // console.log('broadcast....')
-        // return await this.broadcast(msg, isSimulate);
+        const msg = await this.simulateData(createMessageMultiSend, memo, multiSendParam, true);
         return await this.broadcastDirect(msg);
-        // return msg
-        // return null
     }
 
     // vesting balance
-    async vestingBalances(account: any) {
+    async vestingBalances(account: any) : Promise<any> {
         console.log('--------------vesting account');
         const item = account.base_vesting_account.original_vesting.find((item: { denom: string; amount: any; }) => {
             return item.denom === 'asfl';
         });
         const end_time : string = account.base_vesting_account.end_time + '000';
         const start_time : string = account.lockup_periods[0].length + '000';
+        // vesting 잔액 조회
         const payload = { url: `/evmos/vesting/v1/balances/${account.base_vesting_account.base_account.address}` }
         const re = await this.getEvmosCall('queries', payload);
-        console.log(re)
+        // 일반 잔액 조회 (잠김 + 보유, 스테이킹 x)
         const balance_payload = { url: `/cosmos/bank/v1beta1/balances/${account.base_vesting_account.base_account.address}` }
         const { balances: base_balance } = await this.getEvmosCall('queries', balance_payload);
-        console.log(base_balance);
         const base_symbol = 'asfl';
+        // 스테이킹 물량 조회
+        const staking_payload = { url: `/cosmos/staking/v1beta1/delegations/${account.base_vesting_account.base_account.address}` }
+        const { delegation_responses : staking} = await this.getEvmosCall('queries', staking_payload);
+        let stakingTotAmt = '0';
+        staking.find((item: any)=> {
+          stakingTotAmt = new Bignumber(item.balance.amount).plus(stakingTotAmt).toFixed();
+        });
+
+        // promise.allSettled로 await 처리해서 병렬적으로 처리하기 위함
+        // const arr = [this.getEvmosCall('queries', payload), this.getEvmosCall('queries', balance_payload), this.getEvmosCall('queries', staking_payload)]
+        // const temp = await Promise.allSettled(arr);
+        // console.log('fffffffffffffffffffffffffffff');
+        // console.log(temp);
+
         const able_amt = base_balance[0].denom === base_symbol ? base_balance[0].amount : '0';
         const locked_amt = re.locked.length !== 0 ? re.locked[0].denom === base_symbol ? re.locked[0].amount : '0' : '0';
         const total_amt = re.vested.length !== 0 ? re.vested[0].denom === base_symbol ? re.vested[0].amount : '0' : '0' // 전체 수량
+        let able_send_amt = '';
+        // 순수 보유 잔고 가져오기
+        if (new Bignumber(locked_amt).minus(stakingTotAmt).lt(0)) { // 0 보다 작다
+          able_send_amt = new Bignumber(able_amt).minus(locked_amt).toFixed();
+        } else {
+          const temp = new Bignumber(locked_amt).minus(stakingTotAmt).toFixed()
+          able_send_amt = new Bignumber(able_amt).minus(temp).toFixed();
+        }
+
         const balances = [{
             type: "vesting",
             denom: item.denom, // 기본 심볼
             start_time, // 시작시간
             end_time, // 종료시간
-            able_amt, // 보유 잔고 총 수량 (전송 불가, 스테이킹 가능)
+            able_amt, // 보유 잔고 + 잠긴 수량(전송 불가, 스테이킹 가능)
+            able_send_amt, // 보유 잔고
             unvested_amt: re.unvested.length !== 0 ? re.unvested[0].denom === base_symbol ? re.unvested[0].amount : '0' : '0',
             unlocked_amt: new Bignumber(total_amt).minus(locked_amt).toFixed(), // 해제 수량
             locked_amt, // 잠긴 수량
@@ -418,11 +375,18 @@ export class Evmos {
         return { balances };
     }
 
-    // base_fee
-    async baseFees() {
-      const params = { url: `/ethermint/feemarket/v1/base_fee` }
-      const { base_fee } = await this.getEvmosCall('queries', params);
-      return base_fee;
+    async simulateData (aCreateMsg : any , aMemo : string , aParams : object, isUseFeeAmt : boolean ) : Promise<any> {
+        const msgSimulate : any = aCreateMsg(this.network, this.wallet, this.network.getFee(), aMemo, aParams);
+        const re = await this.broadcast(msgSimulate, true);
+        const baseFee = await this.network.baseFees()
+        const feeAmt = new Bignumber(re.gas_info.gas_used).multipliedBy(baseFee).dividedBy(10).toFixed();
+        console.log(`baseFee: ${baseFee}`);
+        console.log(`gas_used: ${re.gas_info.gas_used}`);
+        console.log(`feeAmt:${feeAmt}`);
+        const gasAmount = isUseFeeAmt === true ? feeAmt : undefined
+        const msg : any = aCreateMsg(this.network, this.wallet, this.network.getFee(gasAmount, re.gas_info.gas_used), aMemo, aParams);
+
+        return msg;
     }
 
     // swap -------------------------------------

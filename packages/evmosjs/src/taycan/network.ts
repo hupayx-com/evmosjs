@@ -119,6 +119,12 @@ export class EvmosNetwork implements Network, Chain {
         return addrData;
     }
 
+    public async baseFees() : Promise<any> {
+        const url :String = `/ethermint/feemarket/v1/base_fee`;
+        const { base_fee } = await this.callEvmosGet(url);
+        return base_fee;
+    }
+
     // public async callEvmosGet(uri : String) : Promise<any> {
     //     const res = await fetch(`${this.rpcUrl}${uri}`)
     //     return JSON.parse(res)
