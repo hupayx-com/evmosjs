@@ -53,7 +53,6 @@ export class Evmos {
     async initWallet() {
       await this.getEvmosCall('accounts').then((item) => {
         if (item.account?.base_vesting_account) {
-          console.log(item);
           this.wallet.accountNumber = Number(item.account.base_vesting_account.base_account.account_number);
           this.wallet.sequence = Number(item.account.base_vesting_account.base_account.sequence);
         } else {
@@ -315,7 +314,7 @@ export class Evmos {
         console.log(isSimulate);
         await this.initWallet();
         // console.log('createMessage------------------- multi send !!!!')
-        const msg = await this.simulateData(createMessageMultiSend, memo, multiSendParam, true);
+        const msg = await this.simulateData(createMessageMultiSend, memo, multiSendParam, false);
         return await this.broadcastDirect(msg);
     }
 
@@ -351,14 +350,15 @@ export class Evmos {
         const able_amt = base_balance[0].denom === base_symbol ? base_balance[0].amount : '0';
         const locked_amt = re.locked.length !== 0 ? re.locked[0].denom === base_symbol ? re.locked[0].amount : '0' : '0';
         const total_amt = re.vested.length !== 0 ? re.vested[0].denom === base_symbol ? re.vested[0].amount : '0' : '0' // 전체 수량
-        let able_send_amt = '';
+        // let able_send_amt = '';
+        const able_send_amt = able_amt;
         // 순수 보유 잔고 가져오기
-        if (new Bignumber(locked_amt).minus(stakingTotAmt).lt(0)) { // 0 보다 작다
-          able_send_amt = new Bignumber(able_amt).minus(locked_amt).toFixed();
-        } else {
-          const temp = new Bignumber(locked_amt).minus(stakingTotAmt).toFixed()
-          able_send_amt = new Bignumber(able_amt).minus(temp).toFixed();
-        }
+        // if (new Bignumber(locked_amt).minus(stakingTotAmt).lt(0)) { // 0 보다 작다
+        //   able_send_amt = new Bignumber(able_amt).minus(locked_amt).toFixed();
+        // } else {
+        //   const temp = new Bignumber(locked_amt).minus(stakingTotAmt).toFixed()
+        //   able_send_amt = new Bignumber(able_amt).minus(temp).toFixed();
+        // }
 
         const balances = [{
             type: "vesting",
@@ -379,12 +379,13 @@ export class Evmos {
         const msgSimulate : any = aCreateMsg(this.network, this.wallet, this.network.getFee(), aMemo, aParams);
         const re = await this.broadcast(msgSimulate, true);
         const baseFee = await this.network.baseFees()
-        const feeAmt = new Bignumber(re.gas_info.gas_used).multipliedBy(baseFee).dividedBy(10).toFixed();
+        const feeAmt = new Bignumber(re.gas_info.gas_used).multipliedBy(baseFee).toFixed();
         console.log(`baseFee: ${baseFee}`);
         console.log(`gas_used: ${re.gas_info.gas_used}`);
         console.log(`feeAmt:${feeAmt}`);
-        const gasAmount = isUseFeeAmt === true ? feeAmt : undefined
-        const msg : any = aCreateMsg(this.network, this.wallet, this.network.getFee(gasAmount, re.gas_info.gas_used), aMemo, aParams);
+        console.log(isUseFeeAmt);
+        // const gasAmount = isUseFeeAmt === true ? feeAmt : undefined
+        const msg : any = aCreateMsg(this.network, this.wallet, this.network.getFee(undefined, re.gas_info.gas_used), aMemo, aParams);
 
         return msg;
     }
