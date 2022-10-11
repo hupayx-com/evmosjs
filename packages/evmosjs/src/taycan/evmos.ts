@@ -350,8 +350,12 @@ export class Evmos {
         const able_amt = base_balance[0].denom === base_symbol ? base_balance[0].amount : '0';
         const locked_amt = re.locked.length !== 0 ? re.locked[0].denom === base_symbol ? re.locked[0].amount : '0' : '0';
         const total_amt = re.vested.length !== 0 ? re.vested[0].denom === base_symbol ? re.vested[0].amount : '0' : '0' // 전체 수량
-        // let able_send_amt = '';
-        const able_send_amt = able_amt;
+        let able_send_amt = '';
+        if (new Bignumber(locked_amt).lt(stakingTotAmt)) { // lock < staking
+          able_send_amt = able_amt;
+        } else { // lock > staking
+          able_send_amt = new Bignumber(able_amt).minus(locked_amt).plus(stakingTotAmt).toFixed();
+        }
         // 순수 보유 잔고 가져오기
         // if (new Bignumber(locked_amt).minus(stakingTotAmt).lt(0)) { // 0 보다 작다
         //   able_send_amt = new Bignumber(able_amt).minus(locked_amt).toFixed();
