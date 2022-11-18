@@ -333,36 +333,13 @@ export class Evmos {
         const balance_payload = { url: `/cosmos/bank/v1beta1/balances/${account.base_vesting_account.base_account.address}` }
         const { balances: base_balance } = await this.getEvmosCall('queries', balance_payload);
         const base_symbol = 'asfl';
-        // 스테이킹 물량 조회
-        const staking_payload = { url: `/cosmos/staking/v1beta1/delegations/${account.base_vesting_account.base_account.address}` }
-        const { delegation_responses : staking} = await this.getEvmosCall('queries', staking_payload);
-        let stakingTotAmt = '0';
-        staking.find((item: any)=> {
-          stakingTotAmt = new Bignumber(item.balance.amount).plus(stakingTotAmt).toFixed();
-        });
-
-        // promise.allSettled로 await 처리해서 병렬적으로 처리하기 위함
-        // const arr = [this.getEvmosCall('queries', payload), this.getEvmosCall('queries', balance_payload), this.getEvmosCall('queries', staking_payload)]
-        // const temp = await Promise.allSettled(arr);
-        // console.log('fffffffffffffffffffffffffffff');
-        // console.log(temp);
 
         const able_amt = base_balance[0].denom === base_symbol ? base_balance[0].amount : '0';
         const locked_amt = re.locked.length !== 0 ? re.locked[0].denom === base_symbol ? re.locked[0].amount : '0' : '0';
         const total_amt = re.vested.length !== 0 ? re.vested[0].denom === base_symbol ? re.vested[0].amount : '0' : '0' // 전체 수량
-        let able_send_amt = '';
-        if (new Bignumber(locked_amt).lt(stakingTotAmt)) { // lock < staking
-          able_send_amt = able_amt;
-        } else { // lock > staking
-          able_send_amt = new Bignumber(able_amt).minus(locked_amt).plus(stakingTotAmt).toFixed();
-        }
-        // 순수 보유 잔고 가져오기
-        // if (new Bignumber(locked_amt).minus(stakingTotAmt).lt(0)) { // 0 보다 작다
-        //   able_send_amt = new Bignumber(able_amt).minus(locked_amt).toFixed();
-        // } else {
-        //   const temp = new Bignumber(locked_amt).minus(stakingTotAmt).toFixed()
-        //   able_send_amt = new Bignumber(able_amt).minus(temp).toFixed();
-        // }
+        const sendPayload = { url: `/cosmos/bank/v1beta1/spendable_balances/${account.base_vesting_account.base_account.address}` }
+        const { balances: reSend } = await this.getEvmosCall('queries', sendPayload);
+        const able_send_amt = reSend[0].denom === 'asfl' ? reSend[0].amount : '0';
 
         const balances = [{
             type: "vesting",
@@ -370,7 +347,7 @@ export class Evmos {
             start_time, // 시작시간
             end_time, // 종료시간
             able_amt, // 보유 잔고 + 잠긴 수량(전송 불가, 스테이킹 가능)
-            able_send_amt, // 보유 잔고
+            able_send_amt, // 전송 가능
             unvested_amt: re.unvested.length !== 0 ? re.unvested[0].denom === base_symbol ? re.unvested[0].amount : '0' : '0',
             unlocked_amt: new Bignumber(total_amt).minus(locked_amt).toFixed(), // 해제 수량
             locked_amt, // 잠긴 수량
