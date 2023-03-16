@@ -163,7 +163,7 @@ export class Evmos {
         memo : string = "",
         isSimulate?: Boolean)  : Promise<any> {
 
-        const coin :Coin = formatDenom(coinStr);
+        const coin :Coin = formatDenom(coinStr, this.network.baseDnome);
 
         const sendParams = {
             destinationAddress : toAddr,
@@ -182,14 +182,14 @@ export class Evmos {
 
     async textProposal(title: string, description: string, coinStr : string, memo : string = "")  : Promise<any> {
         await this.initWallet(); // sequence
-        const coin : Coin = formatDenom(coinStr);
+        const coin : Coin = formatDenom(coinStr, this.network.baseDnome);
         const params = {
                 content : {
                     title: title,// "Test Proposal",
                     description: description// "My awesome proposal"
                 },
-                denom: coin.amount, // "sfl",
-                amount: coin.denom, // "101",
+                denom: coin.denom, // "sfl",
+                amount: coin.amount, // "101",
                 proposer: this.wallet.accountAddress,
         }
 
@@ -216,7 +216,7 @@ export class Evmos {
         coinStr : string,
         memo : string = "",
         isSimulate: Boolean = false): Promise<any> {
-        const coin :Coin = formatDenom(coinStr);
+        const coin :Coin = formatDenom(coinStr, this.network.baseDnome);
         const delegateParam = {
             validatorAddress : validatorAddr,
             amount : coin.amount,
@@ -233,7 +233,7 @@ export class Evmos {
         coinStr: string,
         memo: string = "",
         isSimulate: Boolean = false): Promise<any> {
-        const coin :Coin = formatDenom(coinStr);
+        const coin :Coin = formatDenom(coinStr, this.network.baseDnome);
 
         const unDelegateParam = {
             validatorAddress: validatorAddr,
@@ -254,7 +254,7 @@ export class Evmos {
         memo: string = "",
         isSimulate: Boolean = false): Promise<any> {
 
-        const coin :Coin = formatDenom(coinStr);
+        const coin :Coin = formatDenom(coinStr, this.network.baseDnome);
 
         const redelegateParams = {
             validatorSrcAddress: valiSrcAddr,
@@ -322,7 +322,7 @@ export class Evmos {
     async vestingBalances(account: any) : Promise<any> {
         console.log('--------------vesting account');
         const item = account.base_vesting_account.original_vesting.find((item: { denom: string; amount: any; }) => {
-            return item.denom === 'asfl';
+            return item.denom === this.network.baseDnome;
         });
         const end_time : string = account.base_vesting_account.end_time + '000';
         const start_time : string = account.lockup_periods[0].length + '000';
@@ -332,14 +332,14 @@ export class Evmos {
         // 일반 잔액 조회 (잠김 + 보유, 스테이킹 x)
         const balance_payload = { url: `/cosmos/bank/v1beta1/balances/${account.base_vesting_account.base_account.address}` }
         const { balances: base_balance } = await this.getEvmosCall('queries', balance_payload);
-        const base_symbol = 'asfl';
+        const base_symbol = this.network.baseDnome;
 
         const able_amt = base_balance[0].denom === base_symbol ? base_balance[0].amount : '0';
         const locked_amt = re.locked.length !== 0 ? re.locked[0].denom === base_symbol ? re.locked[0].amount : '0' : '0';
         const total_amt = re.vested.length !== 0 ? re.vested[0].denom === base_symbol ? re.vested[0].amount : '0' : '0' // 전체 수량
         const sendPayload = { url: `/cosmos/bank/v1beta1/spendable_balances/${account.base_vesting_account.base_account.address}` }
         const { balances: reSend } = await this.getEvmosCall('queries', sendPayload);
-        const able_send_amt = reSend[0].denom === 'asfl' ? reSend[0].amount : '0';
+        const able_send_amt = reSend[0].denom === this.network.baseDnome ? reSend[0].amount : '0';
 
         const balances = [{
             type: "vesting",
@@ -353,20 +353,27 @@ export class Evmos {
             locked_amt, // 잠긴 수량
             total_amt // 전체 수량
         }];
+        console.log('vesting balances');
+        console.log(balances);
         return { balances };
     }
 
     async simulateData (aCreateMsg : any , aMemo : string , aParams : object, isUseFeeAmt : boolean ) : Promise<any> {
         const msgSimulate : any = aCreateMsg(this.network, this.wallet, this.network.getFee(), aMemo, aParams);
         const re = await this.broadcast(msgSimulate, true);
+        let gas_used: string = '300000';
+        if (re.code === '0') {
+          gas_used = re.gas_info.gas_used;
+        }
+
         const baseFee = await this.network.baseFees()
-        const feeAmt = new Bignumber(re.gas_info.gas_used).multipliedBy(baseFee).toFixed();
+        const feeAmt = new Bignumber(gas_used).multipliedBy(baseFee).toFixed();
         console.log(`baseFee: ${baseFee}`);
-        console.log(`gas_used: ${re.gas_info.gas_used}`);
+        console.log(`gas_used: ${gas_used}`);
         console.log(`feeAmt:${feeAmt}`);
         console.log(isUseFeeAmt);
         // const gasAmount = isUseFeeAmt === true ? feeAmt : undefined
-        const msg : any = aCreateMsg(this.network, this.wallet, this.network.getFee(undefined, re.gas_info.gas_used), aMemo, aParams);
+        const msg : any = aCreateMsg(this.network, this.wallet, this.network.getFee(undefined, gas_used), aMemo, aParams);
 
         return msg;
     }
